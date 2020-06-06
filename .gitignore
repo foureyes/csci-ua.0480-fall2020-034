@@ -1,0 +1,13 @@
+*.swp
+.*.swp
+*.swo
+node_modules
+.DS_Store
+.jekyll-metadata
+.jekyll-cache
+.jekyll-cache/
+.jekyll-cache/*
+_site/
+.sass-cache/
+*.~lock.*
+_data/.~lock.ait-schedule.csv#
