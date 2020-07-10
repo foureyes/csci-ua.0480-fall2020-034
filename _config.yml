@@ -1,4 +1,4 @@
-title: CSCI-UA.0480 Spring 2020, Section 008
+title: CSCI-UA.0480 Fall 2020, Section 034
 
 baseurl: ""
 resource_prefix: "resources/"
@@ -67,20 +67,20 @@ vars:
   contact_note: (the best way to contact me!) 
 
   course_number: "CSCI-UA.0480"
-  course_section: "008"
+  course_section: "034"
   # course_section_2: "003"
   course_name: "Applied Internet Technology"
-  course_semester: "Spring 2020"
-  course_time: "Mon and Wed, 11:00AM - 12:15PM"
+  course_semester: "Fall 2020"
+  course_time: "Mon and Wed, 12:30PM - 1:45PM"
   # course_time_2: "Tue and Thur, 11:00AM - 12:15PM"
-  course_room: 12WV L120
+  course_room: Remote
   # course_room_2: Silver 411
   course_url: https://cs.nyu.edu/courses/fall20/CSCI-UA.0480-008/
   course_site_alt: http://cs.nyu.edu/~jversoza
 
   # office hours
-  office_hours: "<br>Mon 8:45am - 10:45am and Tue 1:30pm - 2:30pm, WWH 422"
-  office_hours_room: WWH 422
+  office_hours: "To be posted"
+  office_hours_room: Link posted in course forums
 
   # finals
   # CSCI-UA.0480-002  Special Topics: Applied Internet Technology Joseph Versoza      Tuesday, December 16, 2014  8:00AM - 9:50AM 
@@ -91,9 +91,7 @@ vars:
   #final_room: WWH 109
   survey_github: https://docs.google.com/forms/d/e/1FAIpQLSfH_31bRaKCjdOcJwaKrVogbwt-HnD2LhHaca85fp90bm_xPQ/viewform
   
-  node_version: 10.x.x or 12.x.x
+  node_version: 12.x.x
 
   slides_img_prefix: "../../resources/img"
-  github_org: "https://github.com/nyu-csci-ua-0480-008-spring-2020"
-
-
+  github_org: "https://github.com/nyu-csci-ua-0480-034-fall-2020"

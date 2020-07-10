@@ -1,5 +1,5 @@
 draft,type,num,date,day,topics,slides,readings,assignments,
-,,1,27-Jan,Mon,"* Introductions 
+,,1,Sep-2,Wed,"* Introductions 
 * JavaScript Basics
 * Variables
 * Functions","In Class
@@ -39,7 +39,7 @@ draft,type,num,date,day,topics,slides,readings,assignments,
  
  * Chapter 1 - Values, Types, and Operators
  * Chapter 2 - Program Structure
- * Chapter 3 - Functions"," __Due Wednesday morning 1/29, by 11am__ 
+ * Chapter 3 - Functions"," __Due Wednesday morning 9/9, by 11am__ 
  
 Quizzes
 
@@ -57,7 +57,8 @@ Quizzes
  
  
 ",
-,,2,29-Jan,Wed,"* Objects
+,holiday,,Sep-7,Mon,Labor Day,,,,
+,,2,Sep-9,Wed,"* Objects
 * Node
 * Modules and Require
 * Static Analysis Tools
@@ -87,16 +88,16 @@ Quizzes
  [{{ site.book_js_5 }}]({{ site.book_js_5_link }})
 
 *  [Chapter 11 - Asynchronous Programming](http://eloquentjavascript.net/11_async.html) (Only read up to Promises)","
- __Due Monday morning 2/3, by 11am__ 
+ __Due Monday morning 9/14, by 11am__ 
  
  * Quiz #4 
 
- __Due Wednesday 2/5, by 11pm__
+ __Due Wednesday 9/15, by 11pm__
 
 
 * [Homework #1](homework/01.html)
 ",
-,,3,3-Feb,Mon,* Higher Order Functions,"* [Higher Order Functions](slides/js/higher-order-functions.html) 
+y,,3,Sep-14,Mon,* Higher Order Functions,"* [Higher Order Functions](slides/js/higher-order-functions.html) 
 * [Higher Order Functions Continued](slides/js/higher-order-functions-continued.html) 
 * [Objects Revisited, Arrow Functions with ""this""](slides/js/objects-prototypes.html)
 * [A Detour: Globals, Methods, and This](slides/js/globals-methods-this.html)","[{{ site.book_js }}]({{ site.book_js_link }})
@@ -113,7 +114,7 @@ Quizzes
  * [Chapter 5 - Higher Order Functions](http://eloquentjavascript.net/05_higher_order.html)"," __Due Monday morning 2/10, by 11am__ 
  
  * Quiz #5",
-,,4,5-Feb,Wed,* Objects and Prototypes,"* [Objects and Prototypes, Classes](slides/05/prototypes.html)
+y,,4,Sep-16,Wed,* Objects and Prototypes,"* [Objects and Prototypes, Classes](slides/05/prototypes.html)
 * [Objects in JavaScript Summary](slides/05/objects-review.html)
 * [Where Not to Use Arrow Functions](slides/05/not-arrow.html)","[{{ site.book_js }}]({{ site.book_js_link }})
  
@@ -134,7 +135,7 @@ Quizzes
  * [Homework #2](homework/02.html) 
 
  ",
-,,5,10-Feb,Mon,"* Networking Primer
+y,,5,Sep-21,Mon,"* Networking Primer
 * Network Programming
 * Streams / Buffers / File IO
 * HTTP
@@ -165,7 +166,7 @@ Net Module Review
  
  * [Create Server](https://nodejs.org/api/net.html#net_net_createserver_options_connectionlistener)
 ",,
-,,6,12-Feb,Wed,"* A Simple Web Server Continued / Our ""Framework""
+y,,6,Sep-23,Wed,"* A Simple Web Server Continued / Our ""Framework""
 * Routing
 * Node HTTP Module","* [HTTP Summary](slides/07/http-summary.html)
 * [Sockets Review](slides/07/sockets-review.html)
@@ -216,8 +217,7 @@ Example Set 2
  
  
  * [Homework #03](homework/03.html)",
-y,holiday,,17-Feb,Mon,Presidents’ Day: No classes scheduled,,,,
-,,7,19-Feb,Wed,"* Server-side Web Framework
+y,,7,Sep-28,Mon,"* Server-side Web Framework
 * Project Layout","Slides
  
  * [Express](slides/08/express.html) 
@@ -234,7 +234,7 @@ Express Documentation
 * [Express Basic Routing](https://expressjs.com/en/starter/basic-routing.html)
 * [Express Routing](https://expressjs.com/en/guide/routing.html) (up to, but not including route paths)
 * [Express Static Files](https://expressjs.com/en/starter/static-files.html)",,
-,,8,24-Feb,Mon,"* Server-side Web Framework Continued
+y,,8,Sep-30,Wed,"* Server-side Web Framework Continued
 * Templating","* (See previous slides on Express)
 * [Templating](slides/09/templating.html)
 * [Middleware](slides/09/middleware.html)
@@ -253,7 +253,7 @@ Express Documentation
  
 * [Homework #4](homework/04.html)
 ",
-,,9,26-Feb,Wed,* Forms,"* Review Middleware
+y,,9,Oct-5,Mon,* Forms,"* Review Middleware
 * [Express Request and Response](slides/09/request-response.html) (start [With Web Server/Web App](slides/09/request-response.html#/7))
 * GET and POST / Request and Response 
 * [Form Handling](slides/10/forms.html)
@@ -270,7 +270,7 @@ Express Documentation
 MDN Articles on Express
 
 * [Forms](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms) (up to validation)",,
-,,10,2-Mar,Mon,"* Cookies
+y,,10,Oct-7,Wed,"* Cookies
 * Sessions 
 * NoSQL Database
 ","* Review form handling, middleware
@@ -300,7 +300,7 @@ MongoDB Documentation
  
 * [Homework #5](homework/05.html)
 ",
-,,11,4-Mar,Wed,"* NoSQL Database Continued
+y,,11,Oct-12,Mon,"* NoSQL Database Continued
 * Object Document Mapper
 * Database Design
 * NoSQL Injection","* [More Mongoose](slides/12/mongoose.html)
@@ -342,43 +342,27 @@ MongoDB Documentation
  * hw 6 – saving to db (short!)
  * [Homework #05](homework/05.html) 
 -->",
-,,12,9-Mar,Mon,* Review,,,,
-,,13,11-Mar,Wed,<strike>EXAM #1</strike> MongoDB  and Mongoose,See slides from previous class,,,
-y,holiday,,16-Mar,Mon,Spring Recess: No classes scheduled,,,,
-y,holiday,,18-Mar,Wed,Spring Recess: No classes scheduled,,,,
-,,14,23-Mar,Mon,"* Final Project
-* Object Document Mapper Continued
+y,,12,Oct-14,Wed,"* Object Document Mapper Continued
 * URL Parameters
-* Validation
-","* Final Project
+* Validation","
 * MongoDB, Mongoose from Previous Classes
 * [Router Objects](slides/14/routers.html)
 * [URL Parameters](slides/14/params.html)
-* [Validation](slides/15/validation.html)","* [Express Routing - Route Parameters](https://expressjs.com/en/guide/routing.html)
-* [Mongoose - Validation](https://mongoosejs.com/docs/validation.html)","__Due Wednesday April 1st__
+* [Validation](slides/15/validation.html)
+
+","* [Express Routing - Route Parameters](https://expressjs.com/en/guide/routing.html)
+* [Mongoose - Validation](https://mongoosejs.com/docs/validation.html)",,
+y,,13,Oct-19,Mon,* Review,"* Exam Review: format, sample assignment",,,
+y,exam,14,Oct-21,Wed,EXAM #1,"
+",,"__Due Wednesday April 1st__
 
 * [Final Project Miletsone #01](final-project.html#milestone1)
 * [Homework #06](homework/06.html) ",
-,,15,25-Mar,Wed,"Review Again / Gradescope Demo
-
-* format
-* sample “assignment
-
-Original Slides
-
-* Authentication
-* Authentication Library
-* Deployment
-
-<!--
- 
- * __new__ User Authentication
- * __new__ OAuth
- * __new__ JWT
- 
--->","* Exam Review: format, sample assignment
-* Review Routers and URL Parameters
+y,,15,Oct-26,Mon,"* Authentication
+* Final Project / Deployment
+","
 * [Final Project](final-project.html)
+* Review Routers and URL Parameters
 * [Authentication](slides/16/auth.html)
 * [High-Level Description of SSL/TLS](slides/16/ssl.html)","Programming JavaScript Applications by Eric Elliott 
 
@@ -402,21 +386,11 @@ Using Passport JS
 
 * Quiz 4 and 5: Auth and Sessions/Cookies, HTML and CSS (to be posted)
 -->",
-y,exam,16,30-Mar,Mon,"EXAM #1 (take from home)
-
-",,,,
-,,17,1-Apr,Wed,"Shifted Topics
-
-* HTML Primer
+y,,16,Oct-28,Wed,"* HTML Primer
 * Accessibility on the Web
 * JavaScript and the Browser
 * The Document Object Model
-* Manipulating Elements
-
-Original Topic
-
-* CSS","Shifted Slides
-
+* Manipulating Elements","
 * [HTML Primer, JavaScript and the Browser](slides/17/javascript-browser.html)
  * [The Document Object Model](slides/17/dom.html)
  * [DOM Continued sample markup](code/dom-continued.html)
@@ -424,13 +398,6 @@ Original Topic
  * [Modifying and Adding Elements](slides/18/modifying-creating.html)
  * [Some Sample Markup](code/class18.html)
  * [Layout and Style](slides/19/layout-style.html)
-
-Original Slides
-
-* [JavaScript Timers](slides/19/timers.html)
-* [CSS](slides/19/css.html)
-* (Optional / Briefly) Flexbox
-* (Optional / Briefly) Grids
 ","{{ site.book_js_5 }}
 
 * [Chapter 13 - JavaScript and the Browser](http://eloquentjavascript.net/13_browser.html)
@@ -442,8 +409,12 @@ HTML Tutorials
 * [MDN - Introduction to HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML)
 * [MDN - Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 * [HTML and CSS from shayhowe.com](http://learn.shayhowe.com/html-css/getting-to-know-html/)
-
-Original Readings
+",,
+y,,17,Nov-2,Mon,* CSS,"* [JavaScript Timers](slides/19/timers.html)
+* [CSS](slides/19/css.html)
+* (Optional / Briefly) Flexbox
+* (Optional / Briefly) Grids
+","
 
 * [HTML and CSS from shayhowe.com](http://learn.shayhowe.com/html-css/getting-to-know-html/)
 * [MDN - Introduction to CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS#Guides)","
@@ -452,7 +423,7 @@ Original Readings
  * [Final Project Milestone #02](final-project.html#milestone2)
 
 ",
-,,18,6-Apr,Mon,"* CSS Continued
+y,,18,Nov-4,Wed,"* CSS Continued
 * Events / Timers","* [Selectors, JS and CSS](slides/19/js-css.html)
 * [Events](slides/19/events.html)
 
@@ -466,7 +437,7 @@ Original Readings
 * Final Project Milestone #03](final-project.html#milestone03)
 
 --->",
-,,19,8-Apr,Wed,"* AJAX
+y,,19,Nov-9,Mon,"* AJAX
 * Same Origin Policy
 * Cross Site Scripting
 * Working with APIs","* Events / Timers Review
@@ -497,7 +468,7 @@ __Due Wednesday 11/13 at 11pm:__
 -->
 
 ",m1 due
-,,20,13-Apr,Mon,"* AJAX Continued
+y,,20,Nov-11,Wed,"* AJAX Continued
 * Polling
 * Promises","* [Ajax Part 2](slides/21/ajax-express.html)
 * [Promises](slides/21/promises.html)
@@ -520,7 +491,7 @@ MDN
 __Due Tuesday 4/21 at 11pm:__
 
 * [Final Project Milestone #03](final-project.html#milestone03)",
-,,21,15-Apr,Wed,"* Promises Continued
+y,,21,Nov-16,Mon,"* Promises Continued
 * fetch 
 * async / await","* Example Code for AJAX and Promises
 * [app.js](examples/ajax-promises/app.js)
@@ -556,7 +527,7 @@ HW 8 AJAX
  * [Homework #9](homework/09.html)
 
 -->",m2 due
-,,22,20-Apr,Mon,* Realtime Web Applications,"* Revisit Polling
+y,,22,Nov-18,Wed,* Realtime Web Applications,"* Revisit Polling
 * [Websockets and socket.io](slides/23/socketio.html)
 * In-Class Workshop Tomorrow
 * [Rooms](slides/25/socketio-rooms.html)
@@ -571,22 +542,13 @@ HW 8 AJAX
  
 
 ",
-,,23,22-Apr,Wed,* Realtime Web Applications Continued,<!-- See lab instructions -->,See previous class,"<!--
-
-Due __today__ while you're in class:
+y,,23,Nov-23,Mon,* Realtime Web Applications Continued,* See lab instructions,See previous class,"Due __today__ while you're in class:
  
  * [Socket.IO Lab](homework/socket-io-lab.html)
- * [Form to submit](https://docs.google.com/forms/d/e/1FAIpQLSf5NfoshWtcdjc0ixxvLTZ3xqtwgDr2kq0up-S_dD8X9vBrQA/viewform)
--->",m3 due
-,,24,27-Apr,Mon,"* Realtime Web Applications, Promises, Final Project
+ * [Form to submit](https://docs.google.com/forms/d/e/1FAIpQLSf5NfoshWtcdjc0ixxvLTZ3xqtwgDr2kq0up-S_dD8X9vBrQA/viewform)",m3 due
+y,,24,Nov-25,Wed,"
 
-(Was frontend framework)
-
-<!--
-
-* Frontend Framework
-
--->","* [React Basics](slides/26/react.html)
+* Frontend Framework","* [React Basics](slides/26/react.html)
 * Final Exam Reminder
 * [React Revisited](slides/26/react-state-parent.html)
 * Example Code: [index.js / Sum of Counters, Text Input](examples/react/demo/src/index.js) (Parent and Child Components, Text Input)
@@ -602,9 +564,7 @@ Due __today__ while you're in class:
 * [Build With React](http://buildwithreact.com/)
 * [React Events](https://facebook.github.io/react/docs/events.html#supported-events)
 * [React Using create-react-app](https://github.com/facebookincubator/create-react-app/blob/master/README.md#getting-started)",,
-,,25,29-Apr,Wed,* Frontend Framework Continued,"<!-- 
-See lab instructions
--->","Same as previous class
+y,,25,Nov-30,Mon,* Frontend Framework Continued,* See lab instructions,"Same as previous class
 
 Practice Questions
  
@@ -615,15 +575,12 @@ Practice Questions
 __Due Sunday 5/3 at 11pm:__ 
  
  * [Homework #8](homework/08.html)",
-,,26,4-May,Mon,"* Build tools 
+y,,26,Dec-2,Wed,"* Build tools 
 * Integration of all technologies","
 * (Optional) [React and Express / Using Webpack](slides/26/react-webpack-continued.html)
-",,"<!--
-
-Due __today__ while you're in class:
+",,"Due __today__ while you're in class:
  
  * [React Lab](homework/react-lab.html)
- * [Form to submit](https://docs.google.com/forms/d/e/1FAIpQLSfPZMXdlMnx-w-ZighnPR5P7bw6opA0h_1QvFiw8M7SNSaKUw/viewform)
--->",
-y,,27,6-May,Wed,* Review,,,,
-y,exam,28,11-May,Mon,EXAM #2,,,,
+ * [Form to submit](https://docs.google.com/forms/d/e/1FAIpQLSfPZMXdlMnx-w-ZighnPR5P7bw6opA0h_1QvFiw8M7SNSaKUw/viewform)",
+y,,27,Dec-7,Mon,* Review,,,,
+y,exam,28,Dec-9,Wed,EXAM #2,,,,
