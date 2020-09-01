@@ -180,10 +180,13 @@ Significant material will be pulled from the following sites:
 <a name="grading"></a>
 <div class="panel-heading">Grading</div>
 <div class="panel-body" markdown="block">
-* __20%__ - Homework
-* __30%__ - Exam #1
-* __35%__ - Exam #2
-* __5%__ - Quizzes / Activities
+
+The following rubric serves as a guideline for how grades will be calculated. __The final percentage allotted to each category is at the instructor’s discretion.__
+
+* __25%__ - Homework
+* __25%__ - Exam #1
+* __30%__ - Exam #2
+* __10%__ - Quizzes / "In-Class" Activities
 * __10%__ - Final Project
 </div>
     </div>
