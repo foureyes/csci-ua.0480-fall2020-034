@@ -60,10 +60,10 @@ vars:
 
 
   survey_intro: https://docs.google.com/forms/d/e/1FAIpQLSeLRQXSrWw4n44xSzFSP0HZ_LLTnEn6gIGCpjIDpz83zsZiWQ/viewform
-  forum: campusewire.com
+  forum: https://campusewire.com
   email: jversoza@cs.nyu.edu
-  contact_link: https://piazza.com/class/k5r0okax2b34sk 
-  contact_label: piazza
+  contact_link: https://campusewire.com
+  contact_label: forums
   contact_note: (the best way to contact me!) 
 
   course_number: "CSCI-UA.0480"
