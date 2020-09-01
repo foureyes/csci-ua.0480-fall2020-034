@@ -201,7 +201,7 @@ The following rubric serves as a guideline for how grades will be calculated. __
 <div class="panel-body" markdown="block">
 There are __tutors available__ for the course.
 
-* See [pinned message on Piazza for up-to-date hours]({{ site.vars.piazza }})
+* See the [pinned message on the course forum]({{ site.vars.forum }})
 
 {% comment %}
     * __Wednesday__  - 5pm - 7pm
