@@ -39,23 +39,28 @@ draft,type,num,date,day,topics,slides,readings,assignments,
  
  * Chapter 1 - Values, Types, and Operators
  * Chapter 2 - Program Structure
- * Chapter 3 - Functions"," __Due Wednesday morning 9/9, by 11am__ 
+ * Chapter 3 - Functions","__Due Friday 9/4, by 11am__  
+
+Homework #0
+ 
+ * [Fill out this survey / use of GitHub consent form]({{ site.survey_intro }})
+ * (Must be logged in to NYU Google Drive)
+ * (Required for future homeworks! ^^^)
+ * [Sign up for piazza]({{ site.forum }})
+
+ 
+ 
+__Due Wednesday morning 9/9, by 11am__ 
  
 Quizzes
 
  * Quizzes #2 and #3 
  * (Quizz #1 will be posted later and is optional)
  
- Homework #0
- 
- * [Fill out this survey / use of GitHub consent form]({{ site.survey_intro }})
- * (Must be logged in to NYU Google Drive)
- * (Required for future homeworks! ^^^)
- * [Sign up for piazza]({{ site.forum }})
+Installation
+
  * [Install Node {{ site.node_version }}](https://nodejs.org/en/)
- * (you can also use homebrew on MacOS or apt/yum/etc. on Linux)
- 
- 
+ * (you can also use homebrew on MacOS or apt/yum/etc. on Linux) 
 ",
 ,holiday,,Sep-7,Mon,Labor Day,,,,
 ,,2,Sep-9,Wed,"* Objects
