@@ -51,7 +51,7 @@ Quizzes
  * [Fill out this survey / use of GitHub consent form]({{ site.survey_intro }})
  * (Must be logged in to NYU Google Drive)
  * (Required for future homeworks! ^^^)
- * [Sign up for piazza]({{ site.piazza }})
+ * [Sign up for piazza]({{ site.forum }})
  * [Install Node {{ site.node_version }}](https://nodejs.org/en/)
  * (you can also use homebrew on MacOS or apt/yum/etc. on Linux)
  
