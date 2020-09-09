@@ -79,8 +79,8 @@ vars:
   course_site_alt: http://cs.nyu.edu/~jversoza
 
   # office hours
-  office_hours: "To be posted"
-  office_hours_room: Link posted in course forums
+  office_hours: "Wednesday 7:45am - 9:15am EDT, Thursday: 3:30pm - 5:00pm EDT"
+  office_hours_room: Remote
 
   # finals
   # CSCI-UA.0480-002  Special Topics: Applied Internet Technology Joseph Versoza      Tuesday, December 16, 2014  8:00AM - 9:50AM 
