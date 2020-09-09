@@ -92,12 +92,12 @@ Quizzes
  
  * Quiz #4 
 
- __Due Wednesday 9/15, by 11pm__
+ __Due Tuesday 9/15, by 11pm__
 
 
 * [Homework #1](homework/01.html)
 ",
-y,,3,Sep-14,Mon,* Higher Order Functions,"* [Higher Order Functions](slides/js/higher-order-functions.html) 
+,,3,Sep-14,Mon,* Higher Order Functions,"* [Higher Order Functions](slides/js/higher-order-functions.html) 
 * [Higher Order Functions Continued](slides/js/higher-order-functions-continued.html) 
 * [Objects Revisited, Arrow Functions with ""this""](slides/js/objects-prototypes.html)
 * [A Detour: Globals, Methods, and This](slides/js/globals-methods-this.html)","[{{ site.book_js }}]({{ site.book_js_link }})
@@ -114,7 +114,7 @@ y,,3,Sep-14,Mon,* Higher Order Functions,"* [Higher Order Functions](slides/js/h
  * [Chapter 5 - Higher Order Functions](http://eloquentjavascript.net/05_higher_order.html)"," __Due Monday morning 9/21, by 11am__ 
  
  * Quiz #5",
-y,,4,Sep-16,Wed,* Objects and Prototypes,"* [Objects and Prototypes, Classes](slides/05/prototypes.html)
+,,4,Sep-16,Wed,* Objects and Prototypes,"* [Objects and Prototypes, Classes](slides/05/prototypes.html)
 * [Objects in JavaScript Summary](slides/05/objects-review.html)
 * [Where Not to Use Arrow Functions](slides/05/not-arrow.html)","[{{ site.book_js }}]({{ site.book_js_link }})
  
@@ -132,8 +132,11 @@ y,,4,Sep-16,Wed,* Objects and Prototypes,"* [Objects and Prototypes, Classes](sl
 
  __Due Thursday 9/23 at 11pm:__
 
- * [Homework #2](homework/02.html) 
+* Homework #2 – to be posted
 
+<!--
+ * [Homework #2](homework/02.html) 
+-->
  ",
 y,,5,Sep-21,Mon,"* Networking Primer
 * Network Programming

@@ -9,7 +9,7 @@ title: CSCI-UA.0480 - Homework #1
 
 # Reversi / Othello
 
-## Due  __Jan 31st, by 11PM__
+## Due  __Feb 5th, by 11PM__
 
 <pre>     A   B   C   D   E   F   G   H
    +---+---+---+---+---+---+---+---+
@@ -73,6 +73,10 @@ See the [example game](#hw01-reversi-sample) shown at the end of these instructi
 * __there will be a significant penalty for not adding the config file and scripted moves portion__
     * these parts are at the end of the instructions (see `User Controlled Game Settings` and `Handling Scripted Moves`)
     * the implementation of these features is important because they help both _you_ and the graders test your program
+* ⚠️ __minor penalties__ will be given for:
+	* including the `node_modules` folder in your repository (use `.gitignore` to make sure this doesn't happen!)
+	* not linting your code with eslint
+
 
 ### Submission Process
 
@@ -85,12 +89,12 @@ The final version of your assignment should be in GitHub.
 ## Preparation
 
 
-Ensure that node and npm are installed (this should have been done for _homework #0_). You should be able to open up your terminal or DOS Shell and run `node -v` and `npm -v`. Both commands should output a version number (probably something like `6.2.2` for node and `3.9.5` for npm).
+Ensure that node and npm are installed (this should have been done for _homework #0_). You should be able to open up your terminal or DOS Shell and run `node -v` and `npm -v`. Both commands should output a version number (probably something like `10.10.0` for `node` and `5.7.1` for `npm`).
 
 1. use git / clone the repository
 2. install development modules
     * mocha and chai for running the supplied unit tests
-    * eshint for cleaning up your JavaScript / spotting common sources of bugs and errors in your code
+    * eslint for cleaning up your JavaScript / spotting common sources of bugs and errors in your code
 3. install modules required by your game
 
 ### Use Git / Clone the repository
@@ -109,25 +113,27 @@ Assuming that you've already:
 
 You can then go through the following steps to clone your repository and commit your first changes:
 
-1. ...go to the [class github page](https://github.com/nyu-csci-ua-0480-008-spring-2018)
-2. find the repository that starts with your NYU NetID and ends with homework01 (for example, jjv222-homework01) 
+1. ...go to the [class github page]({{site.vars.github_org}})
+2. find the repository that starts with your github username and ends with homework01 (for example, mygithubusername-homework01) 
 3. on the repository's page, use the green "Clone or download" button on the right side of the screen to copy the HTTPS clone URL to __clone__ the homework. To use the commandline client (with GITHUB_REPOSITORY_URL being the url you copied from the green button):
     <pre><code data-trim contenteditable> git clone GITHUB_REPOSITORY_URL
 </code></pre>
 4. create a file called <code>.gitignore</code> in the same directory
 5. add the following line to the file so that git ignores any locally installed node modules: <code> node_modules </code>
 6. in the same project directory, create a file called README.md, and edit it so that it includes:
-	* your name and net id
-	* the title of your project: Homework #01 - Reversi
+	* your github username
+	* the title of your project: Homework #01 - Connectmoji
 7. again, in the same project directory, run <code>git add README.md</code> to let git know that we're ready to "save"
-8. save your work locally by running <code>git commit -m "first commit"</code>... everything within the quotes after <code>-m</code> is any commit message you'd like
+8. save your work locally by running <code>git commit -m "add homework meta information"</code>... everything within the quotes after <code>-m</code> is any commit message you'd like
+	* please make your commit messages descriptive
+	* (what features have been added, what bug has been fixed, etc.)
 0. finally, send your work to github by running <code>git push</code> (or <code>git push origin master</code>)
 
-### Install Development Modules
+###  Install Development Modules
 
 You'll have to install a couple of node modules to help you run tests and use static analysis tools on your code. These tools won't be required for your program to run, but they will be useful while you're writing your programs. 
 
-You'll be installing the following module globally:
+You'll be installing the following modules globally:
 
 * `mocha` - for running unit tests
 
@@ -135,18 +141,38 @@ You'll also install the following modules locally in your project directory:
 
 * `chai` - supplies assertions for unit tests
 * `eslint` - for catching potential errors in your code
+* `eslint-plugin-mocha` - to support linting test code
 
-Go into the directory of your cloned repository (`cd username-homework01`), and run the following commands:
+Go into the directory of your cloned repository (`cd username-homework01`), and create `package.json`
 
-<pre><code data-trim contenteditable>npm install -g mocha
-npm install --save-dev eslint
-npm install --save-dev chai
+<pre><code data-trim contenteditable>
+npm init
+# follow the prompts to create a package.json... you can 
+# just use the default answers to the questions that are asked
+# (for our purposes, the answers don't really matter)
 </code></pre>
 
-Note that the last commands install modules _locally_ to your project directory. It will do two things:
+You can add dependencies to `package.json` using the following commands:
 
+<pre><code data-trim contenteditable>npm install --save-dev mocha
+npm install --save-dev eslint
+npm install --save-dev chai
+npm install --save-dev eslint-plugin-mocha
+# can also be installed in a single line
+npm install --save-dev eslint mocha chai eslint-plugin-mocha
+</code></pre>
+
+Note that these will all be installed locally to your project directory:
+
+* It will create a `package-lock.json` file that stores exact versions
 * It will make a modification to an existing file, `package.json`, within your project folder
 * It will create a `node_modules` folder where your downloaded modules are stored (this folder is included in your `.gitignore` file because these external libraries are not meant to be in your project's version control
+
+__Troubleshooting errors__
+
+* On some systems (for example, Ubuntu 18.04), you may have to use `sudo` to run `npm` as the super user
+* If any part of your code complains about a missing package, try installing it with `npm` either locally or globally (do your best to keep everything local at first, of course)
+
 
 ### Install Required Modules
 
@@ -159,11 +185,11 @@ You'll also need a module to help you ask the user for input.
 	* this is very different from how node.js apps usually operate
 	* however, for our purposes, using sync prompt is fine (for now), and it mimics the browser's prompt functionality well
 * check out the example usage on [readline-sync's npm page](https://www.npmjs.com/package/readline-sync)
-    * essentially: `var readlineSync = require('readline-sync');`
+    * essentially: `const readlineSync = require('readline-sync');`
     * which imports the function <code>question</code> from the <code>readline-sync</code> module into your program
 * note that installing `readline-sync` will make a modification to `package.json` as well. This modification to `package.json` should be committed and pushed as well!
 
-### Minimum Number of Commits
+###  Minimum Number of Commits
 
 As you write your code, make sure that you make at least four commits total (more commits are better; if you can, try to commit per feature added). 
 
@@ -179,7 +205,7 @@ git commit -m 'your commit message'
 <pre><code data-trim contenteditable>git push
 </code></pre>
 
-### Running Your Programs
+### Running Your Programs, Linting, and Testing
 
 To run your programs, use the commandline (Terminal.app, DOS, etc.):
 
@@ -191,6 +217,22 @@ node myfile.js
 # or, without changing directory
 node src/myfile.js
 </code></pre>
+
+Use a utility called `npx` to run any executable tools that you've installed, like your linting tool (`eslint`) and your testing tool (`mocha`).
+
+`npx` is included with `npm` (around version 5.2.0), which, on some platforms is automatically installed with `node`. It's used to find the binary of the argument passed to it within your project's `node_modules` so that you don't have to execute it from `node_modules/package_name/bin/executable`.
+
+After installing `eslint` and `mocha`:
+
+<pre><code data-trim contenteditable>
+# to test, from the root of the repository:
+npx mocha tests/reversi-test.js
+
+# to lint, from the root of the repository:
+npx eslint src/*
+</code></pre>
+
+<!-- \* -->
 
 
 ## Part 1 - Reversi Functions and Running Unit Tests
@@ -253,7 +295,7 @@ To make the functions you write available when your module is brought into anoth
 
 When you `require` your module, the object you create for `exports` will be given back. In the example below, the module, `some-module.js` is brought in to the current file (the `./` specifies that the file is in the same directory as the current file) and is represented by the variable, `foo`. The functions can be accessed by using regular dot notation on the `foo` object:
 
-<pre><code data-trim contenteditable>var foo = require('./some-module.js');
+<pre><code data-trim contenteditable>const foo = require('./some-module.js');
 foo.someFunction();
 </code></pre>
 
@@ -272,11 +314,27 @@ The given unit tests use Mocha as a testing framework and Chai for assertions. W
 
 You can __run the included unit tests by using this command__ in your project directory:
 
-`mocha tests/reversi-test.js`
+`npx mocha test/reversi-test.js`
 
 If you run these tests before starting, you'll get a bunch of reference errors. This is because you have no functions implemented yet. Additionally, you'll have to export the functions you create so that the tests have access to them.
 
-__Please try continually running the unit tests as you develop your program.__ To clear out the noise, __feel free to comment out the tests that you aren't working on__, and uncomment them as soon as you have a stub of a function exported.
+__Please try continually running the unit tests as you develop your program.__ 
+
+### Only Running a Subset of Unit Tests
+
+To clear out the noise of dealing with many failing tests due to unimplemented functions, use `.only()`:
+
+Any time that you see the functions `describe()` or `it()` in `tests/reversi-test.js`, you can follow it with `.only()` to limit the tests being run to those contained in the call to `describe` or `it`. For example:
+```
+# describe('generateBoard', function() { });
+describe.only(('generateBoard', function() { });
+# or
+# it('generates a board with specified number of rows and columns', function() { });
+it.only('generates a board with specified number of rows and columns', function() { });
+```
+
+Alternatively, you can simply comment out unused tests until you're ready to implement them.
+
 
 ### Assumptions
 
@@ -582,7 +640,7 @@ __Returns:__
 
 __Description:__
 
-Creates a _text drawing_ representation of the Tic Tac Toe `board` passed in. The board should have:
+Creates a _text drawing_ representation of the `board` passed in. The board should have:
 
 * borders between cells
 * the contents of each cell 
@@ -604,7 +662,7 @@ Printing out an example result would yield:
 
 </code></pre>
 
-It should work for boards of any size! Here's an example of a 7 x 7 board!
+It should work for boards of any size! Here's an example of an 8 x 8 board!
 
 <pre><code data-trim contenteditable>     A   B   C   D   E   F   G   H
    +---+---+---+---+---+---+---+---+
@@ -987,19 +1045,27 @@ __Example:__
 
 ### Checking Your Code, Pushing Your Changes
 
-1. JavaScript is kind of crazy (read: has some really _bad_, but syntactically valid parts), so it's useful to use a static analysis tool, like `eslint` to check your code
-    * ideally, you'd be doing this periodically while you write your program
-    * the commandline usage is described here, but there are eslint integrations for some editors (see the plugins section in the [eslint installation guide](https://www.npmjs.com/package/eslint)
-    * from your project directory run: `./node_modules/.bin/eslint src/*` to check all of the code in the `src` directory
-    * (you _did install_ `eslint` locally in the preparation section, right?)
+1. JavaScript (ES5) is kind of crazy (read: has some really _bad_, but valid parts), so it's useful to use a static analysis tool, like `eslint` to check your code
+    * ideally, you'd be doing this periodically while you develop
+    * the commandline usage is described here, but there are eslint integrations for some editors (see the plugins section in the [eslint installation guide](https://eslint.org/docs/user-guide/integrations))
+    * from your project directory run: `npx eslint src/*` to check all of the code in the `src` directory
+    * (you _did install_ `eslint`, right?)
     * check the output; __make sure you fix all warnings / errors__
+	* __some minor number of points will be deducted for eslint warnings__
 2. Run your tests one last time to make sure that they're all (or... _mostly_) passing.
-    * `mocha tests/reversi-test.js`
+    * `npx mocha test/reversi-test.js`
+	* note that in the tests, `null` is displayed as `[null]`
 3. Fix unit test errors 
-    * if you have test failures, examine the output of each failure...
+    * if you have test failure, examine the output of each failure...
     * it'll describe what was expected vs what was actually given back by your function... 
-    * +/green shows expected, while -/red shows the incorrect output
-    * if you get `TypeError ... is not a function`, you may have:
+    * in the example below, +/green shows expected, while -/red shows the incorrect output
+        <br>
+        ![observed / expected](../resources/img/hw01-reversi-tests-01.png)
+    * if you get `TypeError ... is not a function`
+        <br>
+        ![reference error](../resources/img/hw01-reversi-tests-02.png)
+        <br>
+        ...you may have:
         * not implemented the function (!)
         * named the function differently than what was specified in the instructions
         * did not export the function from your module
@@ -1007,7 +1073,11 @@ __Example:__
     * __use git to add and commit__ to continually save changes
     * push your changes so that they're available on the remote repository (github)
 
-
+{% comment %}
+    * in the following example, the diff of expected and observed shows a very subtle difference in spacing!
+        <br>
+        ![spaces!](../resources/img/connectmoji/hw01-tests-02.png)
+{% endcomment %}
 
 ## Part 2 - Reversi / Othello
 
@@ -1026,12 +1096,12 @@ You'll write your Reversi game in the file called `src/app.js`. Your first step 
 1. bring in the module you created by using `require`
     <pre><code data-trim contenteditable>// you can name the object whatever you like
 // "rev" is used below...
-var rev = require('./reversi.js');
+const rev = require('./reversi.js');
 </code></pre>
 2. bring in the module, `readline-sync`, which you installed in the preparation portion of the homework
-    <pre><code data-trim contenteditable>var readlineSync = require('readline-sync');
-3. also bring in the `fs` module for reading files
+    <pre><code data-trim contenteditable>const readlineSync = require('readline-sync');
 </code></pre>
+3. also bring in the `fs` module for reading files
 
 ### Read in a Config File / Commandline Arguments
 
@@ -1236,7 +1306,7 @@ X: 4
 O: 1
 </code></pre>
     * after a player moves, show the total counts for the player and computer
-    * if a player cannot make a valid move, tell the player to press <ENTER> to pass instead of allowing the player to enter a move
+    * if a player cannot make a valid move, tell the player to press &lt;ENTER&gt; to pass instead of allowing the player to enter a move
         <pre><code data-trim contenteditable>     A   B   C   D   E   F   G   H
          +---+---+---+---+---+---+---+---+
  1 |   |   |   |   |   |   |   |   |
@@ -1297,7 +1367,7 @@ You won! 👍
 If there were scripted moves defined in the config file, allow the game to proceed by pulling the moves for the computer and player from these Arrays... and using them to make a move:
 
 1. if the move pulled from the Array is not valid, then ignore it and allow the computer or player to make their move manually
-2. otherwise, if the move _is_ valid, then prompt the player to press <ENTER> to see their next move
+2. otherwise, if the move _is_ valid, then prompt the player to press &lt;ENTER&gt; to see their next move
 3. if there are no more moves to pull from the array of scripted moves, allow the computer or player to choose their move like usual
 4. Some more details:
     * again, __the player can move manually after the scripted moves have been exhausted__
@@ -1310,7 +1380,7 @@ If there were scripted moves defined in the config file, allow the game to proce
 		"playerLetter": "X",
 		"board": [ 
 					" ", " ", " ", " ",  
-					"x", "O", "X", " ",  
+					" ", "O", "X", " ",  
 					" ", "X", "O", " ",  
 					" ", " ", " ", " "
 		]
