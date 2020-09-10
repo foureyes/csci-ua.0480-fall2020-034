@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 # Connectmoji
 
-## Due __Sep 15th, by 11PM__
+## Due __Sep 21st, by 11PM__
 
 <div markdown="block" class="img">
 ![full play](../resources/img/connectmoji/full-play.gif)
