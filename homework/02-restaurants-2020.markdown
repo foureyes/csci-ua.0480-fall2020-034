@@ -88,20 +88,23 @@ __There will a small (-2) penalty every time one is used__. (Homework is 100 poi
     * create a `.gitignore` to ignore node_modules
 	* create a `package.json` by using `npm init`
     * make sure that `mocha`, `chai`, and `eslint` are still installed (similar to previous assignment)
-        <pre><code data-trim contenteditable>npm install -g mocha
+
+```
+npm install -g mocha
 npm install --save-dev eslint
 npm install --save-dev chai
 npm install --save-dev eslint-plugin-mocha
-</code></pre>
-    * you'll also need a few additional modules installed locally for the unit tests to run:
+```
+
+* you'll also need a few additional modules installed locally for the unit tests to run:
         * finally, install sinon and mocha-sinon locally for mocking `console.log` (these are for unit tests)
         * `npm install --save-dev sinon`
         * `npm install --save-dev mocha-sinon`
-2. implement functions below in __hoffy.js__
-3. make sure you export your functions as you implement them so that...
-4. you can run tests as you develop these functions (again, the tests are included in the repository):
+1. implement functions below in __hoffy.js__
+2. make sure you export your functions as you implement them so that...
+3. you can run tests as you develop these functions (again, the tests are included in the repository):
     `mocha tests/hoffy-test.js`
-5. also remember to run eslint (there's a `.eslintrc` file included in the repository):
+4. also remember to run eslint (there's a `.eslintrc` file included in the repository):
     `node_modules/.bin/eslint src/*`
 
 ### Functions to Implement
@@ -110,35 +113,31 @@ npm install --save-dev eslint-plugin-mocha
 
 <hr>
 
-### `sum(num_1, num_2, ..., num_n)` - 3 points
+### `makeSet(num_1, num_2, ..., num_n)` - 4 points
 
 __Parameters:__
 
-* `num_1, num_2, ... num_n` - the values to be summed
+* `num_1, num_2, ..., num_n` - the `Numbers` that need to be de-duplicated
 
 __Returns:__
 
-* the sum of the arguments as a `Number`
-* if no arguments are passed in, give back `0`
+* an array of just the unique elements in `num_1` to `num_n`
 
 __Description:__
 
-Adds all of the arguments together and returns the resulting sum. If there are no arguments, the resulting sum is 0. Does not have to check for types.
-
-HINTS:
-
-* use `rest` parameters!
+A `Set` is a common data structure which only contains unique elements. In this problem, we want to convert any given array into a `Set`, this means we want to remove duplicates from the original array.
 
 __Examples:__
-```
-// returns the sum of all arguments passed in
-sum(1, 2, 3) // --> 6
-sum(1, 1, 1, 1, 1, 1, 1, 1, 1, 1) // --> 10
-sum(1) // --> 1
 
-// returns 0 if there are no arguments passed in
-sum() // --> 0
 ```
+    makeSet(1, 2, 2, 3, 1); // [1, 2, 3]
+    makeSet(1, 2, 4, 3, 5); // [1, 2, 4, 3, 5]
+    makeSet(1, 2, 4, 3, 2, 5, 3, 7, 2); // [1, 2, 4, 3, 5, 7]
+```
+__Hint:__
+
+* Use `rest` parameters!
+
 <hr>
 
 ### `findIndex(arr, num)` - 4 points
@@ -196,31 +195,6 @@ __Example:__
 
 <hr>
 
-
-### `makeSet(arr)` - 4 points
-
-__Parameters:__
-
-* `arr` - an `Array`
-
-__Returns:__
-
-* an array of just the unique elements in `arr`
-
-__Description:__
-
-A `Set` is a common data structure which only contains unique elements. In this problem, we want to convert any given array into a `Set`, this means we want to remove duplicates from the original array.
-
-__Examples:__
-
-```
-    makeSet([1, 2, 2, 3, 1]); // [1, 2, 3]
-    makeSet([1, 2, 4, 3, 5]); // [1, 2, 4, 3, 5]
-    makeSet([1, 2, 4, 3, 2, 5, 3, 7, 2]); // [1, 2, 4, 3, 5, 7]
-```
-
-<hr>
-
 ### `intersection(arr1, arr2)` - 5 points
 
 __Parameters:__
@@ -239,7 +213,7 @@ Finding intersection of lists of data is a very common problem in CS. We only wa
 
 __Hint:__
 
-Converting the arrays to `sets` might be helpful.
+Converting the arrays to `Sets` might be helpful.
 
 __Examples:__
 
@@ -247,7 +221,7 @@ __Examples:__
 intersection([2], [2]); // [2]
 intersection([2], [1]); // []
 intersection([1, 2], [1]); // [1]
-intersection([2, 1, 2], [1, 2]); // [1,]
+intersection([2, 1, 2], [1, 2]); // [1, 2]
 ```
 
 <hr>
@@ -482,16 +456,15 @@ You'll be using two files for this:
 
 ### Importing Data
 
-* Download the data by going to [https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j-Results/43nn-pn8j](https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j) and clicking the "Export" button on the top right, then the "CSV" button.
+* Download the data by going to the link distributed via Piazza (under "Data - Part 2")
     * place it in a folder outside of your repository
 * Create `src/report.js`...
-* Start by reading in the file (which should have a filename something like `DOHMH_New_York_City_Restaurant_Inspection_Results.csv`) (remember to uncompress the .gz file from above first) using `fs.readFile` (you can use the absolute path)
+* Start by reading in the file (which should have a filename something like `DOHMH_New_York_City_Restaurant_Inspection_Results.csv`) using `fs.readFile` (you can use the absolute path)
     * make sure that `fs` the module is brought in using `require`, then call the function)
     * __do not use `readFileSync`__
 * See the docs on `fs.readFile` (hint: make sure you specify `utf8` as the second argument)
 * The file that you read in contains reports of health inspections
     * there's one restaurant per line
-    * each examination record is represented by a comma-delimited string
 * Find a way to read in and parse the contents of the file so that:
     * leading and trailing white space is removed from the initial contents (use the [string method, `trim`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim))
     * each line into an actual JavaScript object, where the properties correspond with the first row of the file (the headers)
@@ -500,8 +473,8 @@ You'll be using two files for this:
     * note that the goal of this assignment is to work with higher order functions, so memory efficiency does not need to be taken into consideration
 * All of your parsing can only be done from within the callback function (or the function to be called once data is read from the file) that you supply to `fs.readFile`
 * Examine the resulting `Array` ... (for example, try printing it out!)
-* Later, you will be supplying this `Array` to the `processBiteData` function that you create in `bitefunc.js` to generate a report.
-* __You only need to use the following columns from the data (disregard the rest)__
+* Later, you will be supplying this `Array` to the `processRestaurantsData` function that you create in `restaurants.js` to generate a report.
+* __You only need to use the following columns from the data__
   * CAMIS (Unique ID)
   * DBA (Name of the restaurant)
   * Zipcode
@@ -510,7 +483,8 @@ You'll be using two files for this:
   * Score
   * Grade
 * To verify your file reading and parsing, you can try:
-  printing the "boro", "DBA", "score", "grade" of the 2nd (remember the array index starts from 0) listing in the file in the format: '${bizz.DBA} in ${bizz.boro} has a health inspection score of ${bizz.score} with a grade ${bizz.grade}.'
+  printing the "boro", "name", "score", "grade" of the 2nd (remember the array index starts from 0) listing in the file in the format: '${data.name} in ${data.boro} has a health inspection score of ${data.score} with a grade ${data.grade}.'
+
 ```
 Sushi Yu in Brooklyn has a health inspection score of 10 with a grade A.
 ```
@@ -578,7 +552,7 @@ One of the most common peculiarities you'll come across while working with datas
  eg. you might see
 
  ```
- "age": "5"
+ "score": "5"
  ```
 
 It's actually a string whereas we'd like to use it as a float value.
@@ -600,21 +574,24 @@ In situations like these, you'll need to parse the numerical value from the stri
 
 Your report will use the data passed in to determine:
 
-1. Average score of restaurants in Staten Island and Bronx.
-2. The most frequent grade for restaurants in Brooklyn.
-3. Boroughs ranked by most number of A grades.
+1. Who has better food, Staten Island or the Bronx?
+2. How good are the restaurants in Brooklyn?
+3. Which boroughs have the most number of A grades?
 4. What percentage of restaurants in Queens are Chinese restaurants?
-5. Top 3 restaurants in Manhattan with the lowest score value. (low scores are better)
+5. What are three restaurants where you might want to eat at when you're in Manhattan?
 
 See the following details...
 
-### Average Score
+### Comparing food from Staten Island and the Bronx
 
+* We want to compare the average score of all restaurants in Staten Island vs. the Bronx.
+* Note that a lower score is better.
 * Include the average score of all the restaurants in the file but only belonging to first Staten Island, and then the Bronx; format to have at least two decimal places. Example output below:
 
 ```
 Average score of restaurants in Staten Island: 17.21
 Average score of restaurants in the Bronx: 15.21
+Hence, the Bronx has better food than Staten Island.
 ```
 
 * Be careful of weird things popping up in the score column! You can disregard empty values and values <= 0. Don't worry if your number is slightly different.
@@ -648,7 +625,7 @@ The most frequently occuring grade in Brooklyn is A!
 Of all the restaurants in Queens, 17.33% are Chinese restaurants.
 ```
 
-### Top three restaurants in Manhattan with lowest rating
+### Best restaurants in Manhattan
 
 * Go through each restaurant in Manhattan and find the ones with the lowest rating and show the best 3. Example output:
   
@@ -666,7 +643,7 @@ All of the analytics should be coalesced into a single large string representing
 
 This string should be returned by your `processRestaurantsData` function in your module, `restaurants.js`
 
-### Calling processBiteData
+### Calling processRestaurantsData
 
 Now that you've finished your function, you can try calling it on your data from `report.js`
 
@@ -678,6 +655,7 @@ Now that you've finished your function, you can try calling it on your data from
 ```
 Average score of restaurants in Staten Island: 17.21
 Average score of restaurants in the Bronx: 15.21
+Hence, the Bronx has better food than Staten Island.
 
 The most frequently occuring grade in Brooklyn is A!
 
@@ -696,7 +674,63 @@ The best restaurants in Manhattan are:
 3. Olive Garden.
 ```
 
-Lint, commit and push your code.
+## Part 3 - Retrieve JSON from URL
+
+### Setup for Retrieving JSON
+
+In this part, you'll be setting up your project to work with JSON/CSV data from a url:
+
+1. Install the requests library in your project's root folder: `npm install --save request` (similar to installing `readline-sync` in the previous assignment)
+2. Add the module to the beginning of `report.js` using `require`
+3. __Comment out or delete reading from a local file. You can modify the code for the previous part directly to do this.__ 
+
+
+### Retrieve and Process JSON 
+
+Instead of reading a local file, __modify your program__ so that it pieces together all of the data by retrieving partial data sets in json files. The output should be similar, but you'll have to write the part that requests the json files, parses the data out of each file data, and only runs the report when all of the files have been downloaded and parsed.
+
+1. [Read the documentation](https://github.com/request/request) to see how to use the requests module (or see the [slides](../slides/js/js-node-npm-debug-git.html#/6))
+	* Notice that the data is only available within the callback that you pass in to calling `request` (much like using readFile)
+	* Again, a __callback__ is a function passed as an argument to another function... the callback will be invoked / executed at a later time, when some event is triggered
+	* In the case of `request`, it's the function that you pass in as the 2nd argument
+2. Remove the part of your program that reads a local file
+3. Instead, use request to download the first json file (url given through piazza)
+4. Notice that the json file has two fields `data` and `next`
+	* `data` is a list of objects, with each object representing an inspection row
+	* `next` is the name of the next file to retrieve
+5. First try downloading just one file and running your report (the numbers should differ from what you previously had)
+6. Once you have that working...
+	1. Instead of running your report immediately...
+	2. Store the parsed restaurant data (in memory, in a global Array or as an argument that gets continually passed)
+	3. Retrieve the next url to get more data (that is, use the `next` field to get the name of the next json file to retrieve)
+	4. Again, parse the file... and add the data to the data you've already saved
+	5. Continue doing this until there is no more `next` field
+	6. Once you've retrieved all of the data, run your report... it should the same as it did before!
+	7. Check the length of your Array and make sure it has the same number of entries as part 2.
+
+
+```
+Average score of restaurants in Staten Island: 17.21
+Average score of restaurants in the Bronx: 15.21
+Hence, the Bronx has better food than Staten Island.
+
+The most frequently occuring grade in Brooklyn is A!
+
+Boroughs ranked by A grades:
+1. Brooklyn has 94 A grades
+2. Manhattan has 68 A grades
+3. Queens has 59 A grades
+4. Bronx has 42 A grades
+5. Staten Island has 21 A grades
+
+Of all the restaurants in Queens, 17.33% are Chinese restaurants.
+
+The best restaurants in Manhattan are:
+1. Bubba Gump Shrimp Co.
+2. Halal Guys.
+3. Olive Garden.
+```
+Lint, commit and push your code!
 </div>
 
 </div>
