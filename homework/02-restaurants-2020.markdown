@@ -77,7 +77,7 @@ __Do not use__:
 * `for` loops
 * `for ... in` loops
 * `for ... of` loops
-* `forEach` method .
+* `forEach` method (this is fine for part 2)
 
 __There will a small (-2) penalty every time one is used__. (Homework is 100 points total)
 
@@ -113,7 +113,7 @@ npm install --save-dev eslint-plugin-mocha
 
 <hr>
 
-### `makeSet(num_1, num_2, ..., num_n)` - 4 points
+### `makeSet(num_1, num_2, ..., num_n)`
 
 __Parameters:__
 
@@ -140,7 +140,7 @@ __Hint:__
 
 <hr>
 
-### `findIndex(arr, num)` - 4 points
+### `findIndex(arr, num)`
 
 __Parameters:__
 
@@ -162,7 +162,7 @@ __Examples:__
 
 <hr>
 
-### `filterWith(fn)` - 4 points
+### `filterWith(fn)`
 
 __Parameters:__
 
@@ -195,7 +195,7 @@ __Example:__
 
 <hr>
 
-### `intersection(arr1, arr2)` - 5 points
+### `intersection(arr1, arr2)`
 
 __Parameters:__
 
@@ -226,7 +226,7 @@ intersection([2, 1, 2], [1, 2]); // [1, 2]
 
 <hr>
 
-### `repeatCall(fn, n, arg)` - 5 points
+### `repeatCall(fn, n, arg)`
 
 __Parameters:__
 
@@ -261,7 +261,7 @@ repeatCall(console.log, 2, "foo", "bar", "baz", "qux", "quxx", "corge");
 
 <hr>
 
-### `constrainDecorator(fn, min, max)` - 5 points
+### `constrainDecorator(fn, min, max)`
 
 __Parameters:__
 
@@ -308,7 +308,7 @@ __Example:__
 
 <hr>
 
-### `limitCallsDecorator(fn, n)` - 6 points
+### `limitCallsDecorator(fn, n)`
 
 __Parameters:__
 
@@ -345,7 +345,7 @@ __Example:__
 <hr>
 
 
-### `compose(fn1, fn2, ...,fnN)` - 6 points
+### `compose(fn1, fn2, ...,fnN)`
 
 __Parameters:__
 
@@ -595,11 +595,15 @@ Hence, the Bronx has better food than Staten Island.
 ```
 
 * Be careful of weird things popping up in the score column! You can disregard empty values and values <= 0. Don't worry if your number is slightly different.
+* You can check if a value is a number by using the `isNaN` function. 
+* For average, you can count all restaurant values and not just ones with a valid score number.
+  
 
 
 ### Most frequent grade in Brooklyn
 
 * Go through each restaurant in Brooklyn and note which grade occurs the most number of times.
+* Ignore the blank grade ("_")
 
 ```
 The most frequently occuring grade in Brooklyn is A!
@@ -607,7 +611,7 @@ The most frequently occuring grade in Brooklyn is A!
 
 ### Boroughs ranked by A grades
 
-* Rank each borough by the number of A grades
+* Rank each borough by the number of A grades.
 
 ```
 1. Brooklyn has 94 A grades
@@ -619,7 +623,8 @@ The most frequently occuring grade in Brooklyn is A!
 
 ### Percentage of Chinese restaurants in Queens
 
-* Find what % of all restaurants in Queens are Chinese restaurants. Check that the Cuisine is "Chinese"; format to have at least two decimal places. Example output below:
+* Find what % of all restaurants in Queens are Chinese restaurants. Check that the Cuisine is "Chinese"; format to have at least two decimal places.
+* Example output below:
 
 ```
 Of all the restaurants in Queens, 17.33% are Chinese restaurants.
@@ -628,7 +633,7 @@ Of all the restaurants in Queens, 17.33% are Chinese restaurants.
 ### Best restaurants in Manhattan
 
 * Go through each restaurant in Manhattan and find the ones with the lowest rating and show the best 3. Example output:
-  
+* Skip restaurants with a blank score and scores < 0
 ```
 The best restaurants in Manhattan are:
 1. Bubba Gump Shrimp Co.
