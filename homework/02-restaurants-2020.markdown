@@ -456,7 +456,7 @@ You'll be using two files for this:
 
 ### Importing Data
 
-* Download the data by going to the link distributed via Piazza (under "Data - Part 2")
+* Download the data by going to the link - https://raw.githubusercontent.com/rowhanm/csci-ua.0480-fall2020-034/master/homework/02/nyc_restaurants/DOHMH_New_York_City_Restaurant_Inspection_Results.csv
     * place it in a folder outside of your repository
 * Create `src/report.js`...
 * Start by reading in the file (which should have a filename something like `DOHMH_New_York_City_Restaurant_Inspection_Results.csv`) using `fs.readFile` (you can use the absolute path)
@@ -699,7 +699,7 @@ Instead of reading a local file, __modify your program__ so that it pieces toget
 	* Again, a __callback__ is a function passed as an argument to another function... the callback will be invoked / executed at a later time, when some event is triggered
 	* In the case of `request`, it's the function that you pass in as the 2nd argument
 2. Remove the part of your program that reads a local file
-3. Instead, use request to download the first json file (url given through piazza)
+3. Instead, use request to download the first json file (url - https://raw.githubusercontent.com/rowhanm/csci-ua.0480-fall2020-034/master/homework/02/nyc_restaurants/1475ce2f-771f-413a-bcc9-587c904f4ce7.json)
 4. Notice that the json file has two fields `data` and `next`
 	* `data` is a list of objects, with each object representing an inspection row
 	* `next` is the name of the next file to retrieve
