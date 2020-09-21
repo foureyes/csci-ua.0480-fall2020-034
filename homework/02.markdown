@@ -470,7 +470,7 @@ You'll be using two files for this:
 * Download the csv data by going to the link provided in the pinned piazza post 
     * place it in a folder outside of your repository
 * Create `src/report.js`...
-* Start by reading in the file (which should have a filename something like `DOHMH_New_York_City_Restaurant_Inspection_Results.csv`) using `fs.readFile` (you can use the absolute path)
+* Start by reading in the `csv` file using `fs.readFile` (you can use the absolute path)
     * make sure that `fs` the module is brought in using `require`, then call the function)
     * __do not use `readFileSync`__
 * See the docs on `fs.readFile` (hint: make sure you specify `utf8` as the second argument)
@@ -664,7 +664,7 @@ This string should be returned by your `processRestaurantsData` function in your
 Now that you've finished your function, you can try calling it on your data from `report.js`
 
 1. In report.js: require the module that you created (`restaurants.js`).
-2. Use your function on the data that you parsed from reading in the `DOHMH_New_York_City_Restaurant_Inspection_Results.csv` file that you opened earlier.
+2. Use your function on the data that you parsed from reading in the `csv` file that you opened earlier.
 3. Print out the resulting string.
 4. You can compare your output with the example output below
 
