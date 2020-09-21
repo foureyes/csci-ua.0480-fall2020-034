@@ -7,7 +7,7 @@ title: CSCI-UA.0480 - Homework #2
   <div class="panel-heading">Homework #2</div>
   <div class="panel-body" markdown="block">
 
-# Higher Order Functions: Exercises and Processing Data - __Due Feb 13th at 11pm__
+# Higher Order Functions: Exercises and Processing Data - Due __Sep 28th, by 11PM__
 
 ## Overview
 
@@ -15,20 +15,32 @@ title: CSCI-UA.0480 - Homework #2
 
 __hoffy.js__ - Write a series of functions that demonstrate the use of the rest operator (or call/apply), and higher order functions
 
-__nba.js__ and __report.js__ - Create helper functions and a commandline tool that to print out some information about a basketball game, given a json file representing the game
-
+__restaurants.js__ and __report.js__ - Print out a report analyzing the NYC restaurants' health inspection ratings data.
 
 ### Submission Process
 
-You will be given access to a private repository on GitHub. It will contain unit tests, stub files for your code and an `.eslintrc.js`
+You will be given access to a private repository on GitHub. It will contain unit tests, stub files for your code, a `package.json` and a `.eslintrc`
 
 * The final version of your assignment should be in GitHub.
 * __Push__ your changes to the homework repository on GitHub.
 
-### (4 points) Make at Least 4 Commits
+### Minimum number of commits
 
-* Commit multiple times throughout your development process.
-* Make at least 4 separate commits - (for example, one option may be to make one commit per part in the homework).
+As you write your code, make sure that you make at least four commits total (more commits are better; if you can, try to commit per feature added).
+
+* the commits should be meaningful (that is, do not just add a newline, commit and push to make up the requirements for commits).
+* make sure your commit messages describe the changes in the commit; for example:
+	* add solutions to problem 2 and 3 of part 1
+	* fix a bug that prevented reading of csv file
+
+		```
+git add <files>
+git commit -m 'your commit message'
+```
+* push your code frequently
+		```
+git push
+```
 
 ## Part 1 - Setup and Exercises
 
@@ -57,7 +69,7 @@ Implement functions that use JavaScript features such as:
 * optionally arrow functions
 * Array methods: 'filter', 'map', 'reduce'
 
-Go through the functions in order; the concepts explored build off one-another, and the functions become more and more challenging to implement as you go on.
+__No type checking of incoming arguments is required unless explicitly mentioned in instructions__ 
 
 __Do not use__:
 
@@ -65,113 +77,169 @@ __Do not use__:
 * `for` loops
 * `for ... in` loops
 * `for ... of` loops
-* `forEach` method .
+* `forEach` method (this is fine for part 2)
 
-__There will a small (-2.5) penalty every time one is used__. (Homework is 100 points total)
+__There will a small (-2) penalty every time one is used__. (Homework is 100 points total)
 
 
 ### Steps
 
 1. prep...
-	* create a `package.json` using `npm init`
     * create a `.gitignore` to ignore node_modules
+	* create a `package.json` by using `npm init`
     * make sure that `mocha`, `chai`, and `eslint` are still installed (similar to previous assignment)
-        <pre><code data-trim contenteditable>npm install --save-dev mocha
+
+		```
+npm install -g mocha
 npm install --save-dev eslint
 npm install --save-dev chai
 npm install --save-dev eslint-plugin-mocha
-</code></pre>
-    * you'll also need a few additional modules installed locally for the unit tests to run:
-        * finally, install sinon and mocha-sinon locally for mocking `console.log` (these are for unit tests)
-        * `npm install --save-dev sinon`
-        * `npm install --save-dev mocha-sinon`
+```
+	* you'll also need a few additional modules installed locally for the unit tests to run:
+		* finally, install sinon and mocha-sinon locally for mocking `console.log` (these are for unit tests)
+		* `npm install --save-dev sinon`
+		* `npm install --save-dev mocha-sinon`
 2. implement functions below in __hoffy.js__
 3. make sure you export your functions as you implement them so that...
 4. you can run tests as you develop these functions (again, the tests are included in the repository):
-    `npx mocha tests/hoffy-test.js`
+    `mocha tests/hoffy-test.js`
 5. also remember to run eslint (there's a `.eslintrc` file included in the repository):
-    `npx eslint src/*`
+    `node_modules/.bin/eslint src/*`
 
 ### Functions to Implement
 
-### (-2.5 per while, for, forEach, for of, or for in loop used)
-
-
-### `sum(num1, num2, ... numn)`
-
-__Parameters:__
-
-* `num1`, `num2` ... `numn` - the values to be summed
-
-__Returns:__
-
-* the sum of the arguments as a `Number` 
-* the sum of no arguments is 0
-
-__Description:__
-
-Adds all of the arguments together and returns the resulting sum. If there are no arguments, the resulting sum is 0. Does not have to check for types.
-
-Hints:
-
-* use `rest` parameters!
-
-__Example:__
-
-    // returns the sum of all arguments passed in
-    sum(1, 2, 3) // --> 6
-    sum(1, 1, 1, 1, 1, 1, 1, 1, 1, 1) // --> 10
-    sum(1) // --> 1
-
-    // returns 0 if there are no arguments passed in
-    sum() // --> 0
-
+### (-2 per while, for, forEach, for of, or for in loop used)
 
 <hr>
 
-### `callFn(fn, n arg)`
+### `makeSet(num_1, num_2 to num_n)` (use appropriate syntax to accept any number of arguments)
 
 __Parameters:__
 
-* `fn` - the function to be called repeatedly
-* `n` - the number of times to call function, `fn`
-* `arg` - the argument to pass to function, `fn`, when it is called
+* `num_1, num_2, ..., num_n` - the `Numbers` that need to be de-duplicated
 
 __Returns:__
 
-* `undefined` (no return value)
+* an array of just the unique elements in `num_1` to `num_n`
 
 __Description:__
 
-This function demonstrates using functions as an argument or arguments to another function. It calls function, `fn`, `n` times, passing in the argument, `arg` to each invocation / call.  It will ignore the return value of function calls. Note that it passes in only one `arg`. Check out the [readings](http://eloquentjavascript.net/05_higher_order.html) or [slides](../slides/js/higher-order-functions-continued.html) on higher order functions for relevant background material and examples.
+A `Set` is a common data structure which only contains unique elements. In this problem, we want to convert any given series of numbers into a `Set`, this means we want to remove duplicates from the original incoming arguments and return as an `Array`. Assume than an empty `Array` or `Array` of `Number`s is passed in; no need to check types.
 
-HINT: use recursion to avoid regular loops
+__Examples:__
+
+```
+    makeSet(1, 2, 2, 3, 1); // [1, 2, 3]
+    makeSet(1, 2, 4, 3, 5); // [1, 2, 4, 3, 5]
+    makeSet(1, 2, 4, 3, 2, 5, 3, 7, 2); // [1, 2, 4, 3, 5, 7]
+```
+__Hint:__
+
+* Use `rest` parameters!
+
+<hr>
+
+### `findIndex(arr, num, compareFunc)`
+
+__Parameters:__
+
+* `arr` - an `Array`
+* `num` - a value that we are looking for in the array 
+* `compareFunc` - a function used to determine if an element in `arr` is the one that we're looking for
+	* has two parameters, `value1` and `value2`
+	* returns a boolean: `true` if both values should be treated as equal or `false` otherwise
+
+__Returns:__
+
+* an `Array` of all indices of `num` in the Array, `arr` [0 indexed]
+* if the value is not in the `Array`, return `-1` in an array: `[-1]`
+
+__Description__
+
+Collects indices of every element in `arr` that returns `true` when passed into `compareFunc` along with `num`. Assume the appropriate types are passed in. No type checking is required.
+
+__Examples:__
+
+```
+    findIndex([1, 2, 4, 3, 5], 2, (a, b) => a === b); // [1]
+    findIndex([-3, -2, -1, 0, 1, 2, 4, 3, 5], 2, (a, b) => a === b || -a === b); // [1, 5]
+    findIndex([1, 2, 4, 3, 5], 8, (a, b) => a === b); // [-1]
+    findIndex([1, 2, 4, 3, 2, 5, 3, 7, 2], 2, (a, b) => a === b); // [1, 4, 8]
+```
+
+<hr>
+
+### `filterWith(fn)`
+
+__Parameters:__
+
+* `fn` - a _callback_ function that takes in a single argument and returns a value (it will eventually operate on every element in an array)
+
+__Returns:__
+
+* `function` - a function that...
+    * has 1 parameter, an `Array`
+    * returns a new Array where only elements that cause `fn` to return `true` are present (all other elements from the old Array are not included)
+
+__Description:__
+
+This is different from regular filter. The regular version of filter immediately calls the callback function on every element in an Array to return a new Array of filtered elements. `filterWith`, on the other hand, gives back a function rather than executing the callback immediately (think of the difference between bind and call/apply). `filterWith` is basically a function that turns another function into a filtering function (a function that works on Arrays). 
 
 __Example:__
 
-    callFn(console.log, 3, "Hello!");
-    // prints out:
-    // Hello!
-    // Hello!
-    // Hello!
+    // original even function that works on Numbers
+    function even(n) {return n % 2 === 0;} 
+
+    // create a 'filter' version of the square function
+    filterWithEven = filterWith(even); 
+
+    // now square can work on Arrays of Numbers!
+    console.log(filterWithEven([1, 2, 3, 4])); // [2, 4]    
     
-    // calls console.log twice, each time passing in only the first argument
-    // (we'll see how to fix this later)
-    callFn(console.log, 2, "foo", "bar", "baz", "qux", "quxx", "corge");
-        
-    // prints out (again, only 1st arg is passed in):
-    // foo 
-    // foo 
+    const nums = [1, NaN, 3, NaN, NaN, 6, 7];
+    const filterNaN = filterWith(n => !isNaN(n));
+    console.log(filterNaN(nums)); // [1, 3, 6, 7]
 
 <hr>
 
-### `betterCallFn(fn, n, args1 ... argsn)`
+### `intersection(arr1, arr2)`
+
+__Parameters:__
+
+* `arr1` - the first array containing `Numbers`
+* `arr2` - the second array containing `Numbers`
+
+__Returns:__
+
+* an `Array` containing the elements found in both `arr1` and `arr2`
+* if there are no common elements, return an empty array.
+
+__Description:__
+
+Finding intersection of lists of data is a very common problem in CS. We only want to store the common elements from both arrays. If there are duplicates in any of the array then make sure that the resulting array only contains one instance of it.
+
+__Hint:__
+
+Converting the arrays to `Sets` might be helpful.
+
+__Examples:__
+
+```
+intersection([2], [2]); // [2]
+intersection([2], [1]); // []
+intersection([1, 2], [1]); // [1]
+intersection([2, 1, 2], [1, 2]); // [1, 2]
+```
+
+<hr>
+
+### `repeatCall(fn, n, arg)`
 
 __Parameters:__
 
 * `fn` - the function to be called repeatedly
 * `n` - the number of times to call function, `fn`
-* `args1 ... argsn` - _all_ of the arguments to pass in to the function `fn` when it is called
+* `arg` - the argument to be passed to `fn`, when it is called
 
 __Returns:__
 
@@ -179,35 +247,45 @@ __Returns:__
 
 __Description:__
 
-This is pretty much the same function as the previous, but it also demonstrates using a variable number of arguments. It calls function, `fn`, `n` times, passing in all of the remaining arguments that were passed to the original function, as the arguments to the `fn` function invocation. It will ignore the return value of function calls. Here are some hints:
+This function demonstrates using functions as an argument or arguments to another function. It calls function, `fn`, `n` times, passing in the argument, `arg` to each invocation / call. It will ignore the return value of function calls. Note that it passes in only one `arg`.
 
+__Hint:__
 
-* use `rest` parameters and `spread`
-* or use the `arguments` object along with `apply`
+Write a recursive function within your function defintion to implement repetition.
 
-HINT: use recursion to avoid regular loops
+__Examples:__
 
-__Example:__
+```
+repeatCall(console.log, 2, "Hello!");
+// prints out:
+// Hello!
+// Hello!
 
-    // calls console.log twice, each time passing in the args, "foo", "bar", ... "corge"
-    betterCallFn(console.log, 2, "foo", "bar", "baz", "qux", "quxx", "corge");
-        
-    // prints out:
-    // foo bar baz qux quxx corge
-    // foo bar baz qux quxx corge
+// calls console.log twice, each time passing in only the first argument
+
+repeatCall(console.log, 2, "foo", "bar", "baz", "qux", "quxx", "corge");
+    
+// prints out (again, only 1st arg is passed in):
+// foo 
+// foo 
+```
 
 <hr>
 
-
-### `opposite(oldFn)`
+### `constrainDecorator(fn, min, max)`
 
 __Parameters:__
 
-* `oldFn` - a `function` to modify 
+* `fn` - the function to modify (_decorate_)
+* `min` - the minimum value that `fn` can return
+* `max` - the maximum value that `fn` can return
 
 __Returns:__
 
-* a `function` - the function that is returned that behaves the same way as the original function, but it returns the opposite value that the original function would have returned (if calling the original function results in `true`, then the new function will return `false`)
+* `function` - a function that...
+    * does the same thing as the original function, `fn` (that is, it calls the original function)
+    * accepts the same number of arguments as the original function, `fn`
+    * the return value is the return value of `fn`, unless it is less than or greater than the `min` and `max`, in which case it returns `min` or `max` respectively
 
 __Description:__
 
@@ -215,276 +293,157 @@ This function is a decorator. [See the slides on the decorator pattern](../slide
 
 This function wraps the function `fn` in another function so that operations can be performed before and after the original function `fn` is called. This can be used to modify incoming arguments, modify the return value, or do any other task before or after the function call. Again, we'll be modifying the return value in this case.
 
-This particular decorator function takes a function and returns a new function resulting in a _modified_ version of the original. The new, modified version, of the function returns the opposite boolean value of what was returned by the original function. The implementation essentially just calls `oldFn` (the function passed in), captures the return value, and -- instead -- returns the opposite value. You can assume that `oldFn` will always return a boolean values (or, at least a value that can be coerced into a boolean); there's no need to validate.
+This particular decorator function constrains the result of the function being wrapped, `fn` so that its return value fits between `min` and `max` inclusive. If these are omitted from the original outer function, then the newly returned function will just return the value unmodified. You can assume that the return value of `fn` is `Number` (you do not have to deal with other types).
 
 
 __Example:__
 
-```
-const isSmol = s => s.length < 3;
-const isBig = opposite(isSmol);
-console.log(isBig('abstentious'))
-// true
+    // creates a new function from the built-in function, parseInt
+    // the new function is the same thing as parseInt, but it constrains
+    // the return value to a value between min and max (inclusive)
+    const constrainedParseInt = constrainDecorator(parseInt, -10, 10);
 
-const isUpper = s => s.toUpperCase() === s;
-const isLower = opposite(isUpper);
-console.log(isLower('ABSTENTIOUS'));
-// false
-```
+    // still works like the original parseInt
+    constrainedParseInt("7") // --> 7
+    constrainedParseInt("-10")) // --> -10
+
+    // but if the return value is less than min or greater than max
+    // it returns min or max respectively
+    constrainedParseInt("-12") // --> -10
+    constrainedParseInt("12")) // --> 10
+
+    // however, if either min or max are missing, then the new function
+    // returns the result of fn unmodified regardless of value
+    var constrainedParseInt2 = constrainDecorator(parseInt);
+    constrainedParseInt2("-12") // --> -12
 
 <hr>
 
-
-### `bucket(arr, fn)`
+### `limitCallsDecorator(fn, n)`
 
 __Parameters:__
 
-* `arr` - an `Array`
-* `fn` - a function that returns true or false 
-	* `fn` has one argument, a value to test
+* `fn` - the function to modify (_decorate_)
+* `n` - the number of times that `fn` is allowed to be called
 
 __Returns:__
 
-* an `Array` containing two Arrays:
-	* one with all elements that passed the test, `fn`
-	* the other with all elements that did not pass the test, `fn`
+* `function` - a function that...
+    * does the same thing as the original function, `fn` (that is, it calls the original function)
+    * but can only be called `n` times
+    * after the `n`th call, the original function, `fn` will not be called, and the return value will always be `undefined`
 
 __Description:__
 
-Takes an Array of values and creates two new Arrays by calling the function, `fn`, on every element. If `fn` returns true, the element is added to the 1st Array, otherwise it's added to the 2nd . Both Arrays are returned nested in a containing Array. 
+This is the culmination of all of the concepts from the previous functions. However, instead of just reading from a variable that's available through the closure, you'll use it to keep track of the number of times that a function is called... and prevent the function from being called again if it goes over the `max` number of allowed function calls. Here are the steps you'll go through to implement this:
 
+1. create your decorator (function)
+2. create a local variable to keep track of the number of calls
+3. create an inner function to return
+    * the inner function will check if the number of calls is less than the max number of allowed calls
+    * if it's still under max, call the function, `fn` (allow all arguments to be passed), return the return value of calling `fn`, and increment the number of calls
+    * if it's over max, just return `undefined` immediately without calling the original function
 
 __Example:__
 
-```
- // the following partitions numbers by whether or not the number is even or odd:
-const numbers = [1, 7, 2, 5, 30];
-const [evens, odds] = partition(numbers, n => n % 2 === 0);
-console.log('odds', odds, '| evens', evens); // odds [ 1, 7, 5 ] | evens [ 2, 30 ]
-```
+    const = limitedParseInt = limitCallsDecorator(parseInt, 3);
+    limitedParseInt("423") // --> 423
+    limitedParseInt("423") // --> 423
+    limitedParseInt("423") // --> 423
+    limitedParseInt("423") // --> undefined
+
 
 <hr>
 
-### `addPermissions(oldFn)`
+
+### `compose(fn1, fn2, ...,fnN)`
 
 __Parameters:__
 
-* `oldFn` - a `function` to modify / _decorate_
+* `fn1, fn2, ..., fnN` - a bunch of functions
 
 __Returns:__
 
-* a `function` - this new, returned function has one extra parameter more than `oldFn` (the function passed in), and this parameter determines whether or not `oldFn` should be run
+* `function` - a function that will pass it's arguments to `fn1`, take the output of `fn1` and use it as the argument to `fn2`, then take the output of `fn2` and use it for `fn3`, and then... etc
+
 
 __Description:__
 
-This decorator takes an old function and returns a new function with an extra parameter. The extra parameter, an object that represents whether or not the function is allowed to run, is in the beginning of the parameter list. If this object has a property named admin, and it's value is __exactly__ true, then the old function, `oldFn`, is run, and the result of calling `oldFn` is returned. If the object does not have an admin property exactly equal to true (or if the object _cannot_ have properties, objects like `undefined` and `null`), then the `oldFn` is not run, and `undefined` is returned instead. 
+A handy utility for automating the writing of code that's just calling functions to pass their arguments to other functions. You can assume that each function passed in only takes one argument.
+
+HINT: we are _summing_ or _composing_ the functionality of a bunch of functions together
 
 __Example:__
 
-```
-const myParseInt = addPermissions(parseInt);      // create a new version of parseInt
-console.log(myParseInt(null, '101', 2));          // undefined
-console.log(myParseInt({admin: true}, '101', 2)); // 5
-console.log(myParseInt(undefined, '101', 2));     // undefined
-console.log(myParseInt(5, '101', 2));             // undefined 
-```
 
-<hr>
-           
+    // let's say you have some pretty procedural functions
+    function superCamelCase(s) {
+      return s
+        .split("")
+        .map((c, i) => (i % 2 == 0 ? c.toUpperCase() : c.toLowerCase()))
+        .join("")
+    }
 
-### `myReadFile(fileName, successFn, errorFn)`
+    function spaceText(s) {
+      return s.split("").join(" ")
+    }
 
-__Parameters:__
+    function addStyle(s) {
+      return "~~~ " + s + " ~~~"
+    }
 
-* `fileName` - a `string`, the name of the file to read from
-* `successFunc` - a `function` to call if file is successfully read
-	* function has single argument, the data read from the file as a `string`
-* `errorFunc` - a `function` to call if error occurs while reading file (such as file does not exist)
-	* function has single argument, an error object (the same error object passed to `fs.readFile`'s callback)
+    // you want to make a playlist of them
+    const aestheticFmtPipeline = compose(
+      superCamelCase,
+      spaceText,
+      addStyle
+    )
 
-__Returns:__
+    console.log(aestheticFmtPipeline("hello world")) // ~~~ H e L l O   W o R l D ~~~
 
-* `undefined` (no return value)
+    function makeVertical(s) {
+      return s.split("").join("\n")
+    }
 
-__Description:__
+    // playlists of playlists of functions
+    const tallAestheticFmt = compose(aestheticFmtPipeline, makeVertical)
 
-This function gives us an alternative _interface_ to `fs.readFile`. `fs.readFile` typically takes a single callback (after the file name) with two arguments: an error object and the data read from the file. This function, instead, takes two callbacks as arguments (both after the file name) -- one to be called on success and one to be called on failure. Both callbacks only have one parameter (the data read from the file or an error object). The actual implementation simply calls `fs.readFile`. Note that you can assume that file read in is text, so pass in a second argument to `fs.readFile` to read the data as utf-8: `fs.readFile('filename.txt', 'utf-8', callback)`
+    console.log(tallAestheticFmt("goodbye world"))
+    /*
+    ~
+    ~
+    ~
 
+    G
 
-⚠️ The file used to test this functions, `words.txt` contains `\n`. If:
+    o
 
-* you use windows and your git installation automatically converts `\n` to `\r\n`
-* you overwrite this file in windows
+    O
 
-... the tests will fail due to line ending inconsistencies. The repo should have been created with a gitattributes file to specify conversion behavior... so thanks to a student that tested a potential proposal solution, you can patch your test file with:
+    d
 
-```
+    B
 
-diff --git a/tests/hoffy-test.js b/tests/hoffy-test.js
-index c034da4..c566692 100644
---- a/tests/hoffy-test.js
-+++ b/tests/hoffy-test.js
-@@ -1,6 +1,7 @@
- const chai = require('chai');
- const expect = chai.expect;
- const path = require('path');
-+const os = require('os');
- require('mocha-sinon');
- Object.assign(global, require(path.join(__dirname, '../src/hoffy.js')));
+    y
 
-@@ -92,7 +93,7 @@ describe('hoffy', function() {
-     describe('myReadFile', function() {
-         it('calls a success function (passed as the 2nd argument) if the file is read successfully', function(done) {
-             myReadFile('tests/words.txt', (data) => {
--                expect(data).to.equal("ant bat\ncat dog emu\nfox\n");
-+                expect(data).to.equal("ant bat"+os.EOL+"cat dog emu"+os.EOL+"fox"+os.EOL);
-                 done();
-             }, err => console.log('Error opening file:', err));
-         });
-@@ -106,7 +107,7 @@ describe('hoffy', function() {
-
-     describe('readAndExtractWith', function() {
-         it('returns a function that can be used to extract data from file', function(done) {
--            const getWords = (s) => s.trim().split('\n').reduce((words, line) => [...words, ...line.split(' ')], []);
-+            const getWords = (s) => s.trim().split(os.EOL).reduce((words, line) => [...words, ...line.split(' ')], []);
-             const f = readAndExtractWith(getWords);
-             f('tests/words.txt', (data) => {
-                 expect(data).to.eql(['ant', 'bat', 'cat', 'dog',  'emu', 'fox']);
-@@ -114,7 +115,7 @@ describe('hoffy', function() {
-             }, console.log.bind(null, 'ERROR'));
-         });
-         it('returned function calls an error function (passed as the 3rd argument) if an error occurs while reading the file', function(done) {
--            const getWords = (s) => s.trim().split('\n').reduce((words, line) => [...words, ...line.split(' ')], []);
-+            const getWords = (s) => s.trim().split(os.EOL).reduce((words, line) => [...words, ...line.split(' ')], []);
-             const f = readAndExtractWith(getWords);
-             f('tests/fileDoesNotExist.txt', console.log, err => {
-                 expect(err).to.be.not.null;
-```
-
-__Example:__
-
-```
-// Assuming the contents of the file, tests/words.txt is:
-// ant bat
-// cat dog emu
-// fox
-const success = (data) => console.log(data); 
-const failure = (err) => console.log('Error opening file:', err);
-
-myReadFile('tests/words.txt', success, failure);
-
-// prints out:
-// ant bat
-// cat dog emu
-// fox
-
-myReadFile('tests/fileDoesNotExist.txt', success, failure);
-// The error message would be printed out because the file does not exist:
-// Error opening file: ... 
-```
-
-<hr>
-
-### `readAndExtractWith(extractor)`
-
-__Parameters:__
-
-* `extractor` - a `function` that can be used to extract structured data out of the rawData read in from a file
-
-__Returns:__
-
-* a `function` - a new `function`
-	* the new function has similar parameters to the previous function
-	* `fileName` - a `string`, the name of the file to read from
-	* `successFunc` - a `function` to call if file is successfully read
-		* function has single argument, the data read from the file as a `string`
-	* `errorFunc` - a `function` to call if error occurs while reading file (such as file does not exist)
-		* function has single argument, an error object (the same error object passed to `fs.readFile`'s callback)
-
-__Description:__
-
-This function produces functions similar to the previous function. However, the resulting function not only calls the success or failure callback, it also calls the extractor function to manipulate the data being fed into the success callback.
-
-In the example below, we can see that the extractor function parses through lines in a file and breaks it up into individual words using newlines and spaces as separators.
-
-Using this extractor function, we can make a new function that can read a file and automatically break up the contents into individual words.
+    E
 
 
-__Example:__
 
-```
-const getWords = (s) => s.trim().split('\n').reduce((words, line) => [...words, ...line.split(' ')], []);
-const f = readAndExtractWith(getWords);
+    W
 
-const success = (data) => console.log(data); 
-const failure = (err) => console.log('Error opening file:', err);
+    o
 
-// Assuming the contents of the file, tests/words.txt is:
-// ant bat
-// cat dog emu
-// fox
+    R
 
-f('tests/words.txt', success, failure); 
-// output is: ['ant', 'bat', 'cat', 'dog',  'emu', 'fox']
+    l
 
-// again, if there's an error, the failure callback is executed
-```
+    D
 
-<hr>
-
-### `rowsToObjects(data)`
-
-__Parameters:__
-
-* `data` - an `object` with the following properties:
-	* `headers` - the names of the columns of the data contained in `rows`
-	* `rows` - a 2-dimensional `Array` of data, with the first dimension being rows, and the second being columns
-
-__Returns:__
-
-* an `Array` of objects with the original headers (column names) as properties... and values taken from the original data in each row that aligns with the column name
-
-__Description:__
-
-This converts a 2-d array of data:
-
-```
-[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-```
-
-...into an Array of objects with property names, given the property names as headers.
-
-```
-// headers
-['a', 'b', 'c'];
-```
-
-```
-// result
-// [{a: 1, b: 2, c: 3}, {a: 4, b: 5, c: 6}, {a: 7, b: 8, c: 9}];
-```
-
-The data should come in as an object where the headers an `Array` in the `headers` property of the object, and the data is the value in the `rows` property of the object:
-
-```
-{
-	headers: ['col1', 'col2'],
-	rows: [[1, 2], 
-		   [3, 4]]
-}
-```
-
-__Example:__
-
-```
-const headers = ['a', 'b', 'c'];
-const rows = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-const result = rowsToObjects({headers, rows}) 
-console.log(result);
-// [{a: 1, b: 2, c: 3}, {a: 4, b: 5, c: 6}, {a: 7, b: 8, c: 9}];
-```
-
-<hr>
+    ~
+    ~
+    ~
+    */
 
 ### Test, Lint and Commit
 
@@ -495,121 +454,299 @@ Once you're finished with your functions, remember to:
 3. commit and push your code!
 
 
-## Part 2 - NBA Data
+## Part 2 - Processing NYC Restaurant Examination Data
 
-### Overview
+In this part, you'll work with a dataset of hygiene examination records of New York City restaurants.
 
-There are two steps to this part:
+The data is free to use as part of NYC's open data initiative.
 
-1. implement helper functions in `nba.js`
-2. use those functions to print a report about an NBA game in `report.js`
+You'll be using two files for this:
+1. `restaurants.js` to create a function called `processRestaurantData`
+    * the function will take an `Array` of objects with each object representing a listing
+2. `report.js` to read in and parse JSON data and use the `processRestaurantData` function above to create a report
 
-Implement and export a few functions in `nba.js`. All of the functions in `nba.js` will deal work on a list of objects, with each object representing a player's data from an NBA game. This Array will typically be the argument passed in to each `function` (as a an argument called `data`). Each player object contains info such as:
+### Importing Data
 
-* `TEAM_CITY`
-* `PLAYER_NAME`
-* `FG3_PCT`
-* `FG3_A`
-* `REB`
-* `AST`
-* `PTS`
-
-For example, a single game's data may be represented as:
-
-```
-[ 
-  {"TEAM_CITY": "Brooklyn", "PLAYER_NAME": "Spencer Dinwiddie", "FG3_PCT": 0.25}, // more properties included
-  {"TEAM_CITY": "Brooklyn", "PLAYER_NAME": "Joe Harris", "FG3_PCT": 0.75}, // more properties
-  {"TEAM_CITY": "Atlanta", "PLAYER_NAME": "Trae Young", "FG3_PCT": 0.67} // more properties
-  // more object after this
-]
-```
-
-Note that player from both teams are included.
-
-Once you've implemented helper functions in `nba.js`, you can use those functions in `report.js`. If it's helpful, you're free to to reuse functions from `hoffy.js`, in either file, but `for`, `while`, `for in`, `for of`, and `.forEach` are all still off limits.
-
-`report.js` can be used as a commandline utility. Given an absolute path to a json data file, It should examine the file's contents and print out a report. The json file contains information about a game from the NBA's 2018/2019 season.
-
-Example usage:
-
-```
-# on the commandline
-node src/report.js /absolute/path/to/your/repo/data/0021800952.json
-```
-
-The resulting output might look like this:
+* Download the csv data by going to the link provided in the pinned piazza post 
+    * place it in a folder outside of your repository
+* Create `src/report.js`...
+* Start by reading in the file (which should have a filename something like `DOHMH_New_York_City_Restaurant_Inspection_Results.csv`) using `fs.readFile` (you can use the absolute path)
+    * make sure that `fs` the module is brought in using `require`, then call the function)
+    * __do not use `readFileSync`__
+* See the docs on `fs.readFile` (hint: make sure you specify `utf8` as the second argument)
+* The file that you read in contains reports of health inspections
+    * there's one restaurant per line
+* Find a way to read in and parse the contents of the file so that:
+    * leading and trailing white space is removed from the initial contents (use the [string method, `trim`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim))
+    * each line into an actual JavaScript object, where the properties correspond with the first row of the file (the headers)
+    * each resulting object is placed into an `Array` for later processing
+    * you can check out some [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and  [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) documentation
+    * note that the goal of this assignment is to work with higher order functions, so memory efficiency does not need to be taken into consideration
+* All of your parsing can only be done from within the callback function (or the function to be called once data is read from the file) that you supply to `fs.readFile`
+* Examine the resulting `Array` ... (for example, try printing it out!)
+* Later, you will be supplying this `Array` to the `processRestaurantsData` function that you create in `restaurants.js` to generate a report.
+* __You only need to use the following columns from the data__
+  * CAMIS (Unique ID)
+  * DBA (Name of the restaurant)
+  * Zipcode
+  * Cuisine Description
+  * Inspection Date
+  * Score
+  * Grade
+* To verify your file reading and parsing, you can try:
+  printing the "boro", "name", "score", "grade" of the 2nd (remember the array index starts from 0) listing in the file in the format: '${data.name} in ${data.boro} has a health inspection score of ${data.score} with a grade ${data.grade}.'
 
 ```
-* The score was: { Dallas: 88, Brooklyn: 127 }
-* The best passer was: D'Angelo Russell with 11 assists.
-* The total rebounds per team were: { Dallas: 36, Brooklyn: 48 }
-* The best 3-point shooters were:
-1. Dwight Powell: 0.833
-2. DeMarre Carroll: 0.714
-3. Rodions Kurucs: 0.714
+Sushi Yu in Brooklyn has a health inspection score of 10 with a grade A.
 ```
 
-The original `json` file will have to parsed and manipulated so that it's in a data structure that you functions can work with.
+### Examining the Data
+* Assuming that your parsed data is in a variable called `data` ...
+* `data` will be an `Array` of JSON objects (each line should have been parsed from JSON before pushing into the `data` array)
+* Each object in `data` contains location data, score, grade, and categories.
 
-### `nba.js` Functions
-
-Again, each function will have a parameter, `data`, that's in the format of an `Array` of objects, with each object representing player data for a game.
-
-1. `bestPasser(data)` - gives back an _entire_ player object from the data set that has the highest value for the `AST` property. If there's a tie; you can use any method to pick which object to return.
-	* `{"TEAM_CITY": "Brooklyn", "PLAYER_NAME": "Joe Harris", "FG3_PCT": 0.75} // remainder of properties should be included`
-2. `getTeamCities(data)` - gives back an `Array` containing the names of the teams (as cities) in a single `Array`. This can be retrieved from the `TEAM_CITY` property (many players will have the same `TEAM_CITY`)
-	* `['Brooklyn', 'Atlanta']`
-3. `teamRebounds(city, data)` - gives back total rebounds (`REB`) for all players on team specified by the `city` parameter passed in
-	* `48`
-4. `reboundTotals(data)` - gives back an object containing the `TEAM_CITY` value as a property and the total rebounds (`REB`) for all players on that team... for both teams
-	* `{Dallas: 36, Brooklyn: 48}`
-
-Export these functions using `module.exports`.
-
-### `report.js`
-
-In `report.js`:
-
-1. bring in the functions from `nba.js`
-	* feel free to add more helper functions / utilities
-2. if useful, bring functions from `hoffy.js`
-3. use `process.argv[2]` to retrieve the path specified when `report.js` is run on the commandline:
-	* `node src/report.js /path/to/file` 
-	* `process.argv[2]` will contain `/path/to/file`
-4. find a way to read the contents of this file, parse it, and transform the data into data that can be used for your `nba.js` functions
-	* `JSON.parse` can be used to turn a string into a JavaScript object
-	* examine the resulting object to retrieve the headers and rows
-	* find a way to combine those headers and rows into an `Array` of player objects
-5. print out a report that includes:
-	* the total score for both teams as an object
-	* the player with the most assists (`AST`) in the format:
-		* `The best passer was: ${playerName} with ${numAssists} assists`
-	* the total rebounds per team (`REB`) as an object
-	* the 3 players with the highest shooting percentages (`FG3_PCT`) for 3 point shots, in the format:
-		* `${number}. ${playerName}: ${percent}`
-		* __only do this for players that took more than one 3-point shot__ (`FG3A`)
-		
-Again, running the command (from the root of your project):
+Below is a sample listing from the dataset with a description of properties you'd need for your assignment
 
 ```
-`node src/report.js /path/to/file` 
-```
+{
+  // nyc's integer id for this restaurant
+  "CAMIS": 41615149,
 
-in terminal on a file would output _something_ like:
+  // name of the restaurant
+  "DBA": "GOLDEN STARS PIZZA",
 
-```
-* The score was: { Dallas: 88, Brooklyn: 127 }
-* The best passer was: D'Angelo Russell with 11 assists.
-* The total rebounds per team were: { Dallas: 36, Brooklyn: 48 }
-* The best 3-point shooters were:
-1. Dwight Powell: 0.833
-2. DeMarre Carroll: 0.714
-3. Rodions Kurucs: 0.714
+  // borough
+  "boro": "Brooklyn",
+
+  // integer zipcode
+  "zipcode": 11204,
+
+  // cuisine description
+  "cuisine": "Italian",
+
+  // inspection date
+  "date": "10/28/2019",
+
+  // Integer Score
+  "score": 13,
+
+  // Grade
+  "grade": "A"
+}
 ```
 
 
+### Analytics
 
+#### The `processRestaurantData` Function
+
+You'll create a function to generate a report (as a string) based on the health inspection data. You'll write this function in `restaurant.js`.
+
+### `processRestaurantData(restaurants)`
+
+__Parameters:__
+
+* `restaurants` - an `Array` of objects, with each object representing a report of an inspection
+
+__Returns:__
+
+* a string containing a report based on the data passed in
+
+__Description:__
+
+This function will generate a report based on the `Array` of objects passed in. The report will contain answers to some questions based on the data.
+
+__Important note about parsing numerical values:__
+
+One of the most common peculiarities you'll come across while working with datasets is that the values read in from a file is that they might not be in the format you expect them to be (they may not be the _right_ type).
+
+ eg. you might see
+
+ ```
+ "score": "5"
+ ```
+
+It's actually a string whereas we'd like to use it as a float value.
+
+In situations like these, you'll need to parse the numerical value from the string. Here, we'll [use the `parseInt(strval)` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
+
+
+### Implementation Requirements
+
+1. When creating your report in `processRestaurantsData`, you must use all of the following Array methods at least once each in your program:
+    * `forEach` (note that you cannot use `break` in `forEach`
+    * `filter` - use the return value
+    * `map` - use the return value
+    * `reduce` - use the return value
+    * There will be a small penalty for each one not used (-2).
+    * HINT: A typical pattern is to always use map 99% of the time, so you never accidentally get rid of or mess up the data, except when you're doing your first pass through the data to clean it up. 
+	
+### Report Overview
+
+Your report will use the data passed in to determine:
+
+1. Who has better food, Staten Island or the Bronx?
+2. How good are the restaurants in Brooklyn?
+3. Which boroughs have the most number of A grades?
+4. What percentage of restaurants in Queens are Chinese restaurants?
+5. What are three restaurants where you might want to eat at when you're in Manhattan?
+
+See the following details...
+
+### Comparing food from Staten Island and the Bronx
+
+* We want to compare the average score of all restaurants in Staten Island vs. the Bronx.
+* Note that a lower score is better.
+* Include the average score of all the restaurants in the file but only belonging to first Staten Island, and then the Bronx; format to have at least two decimal places. Example output below:
+
+```
+Average score of restaurants in Staten Island: 17.21
+Average score of restaurants in the Bronx: 15.21
+Hence, the Bronx has better food than Staten Island.
+```
+
+* Be careful of weird things popping up in the score column! You can disregard empty values and values <= 0. Don't worry if your number is slightly different.
+* You can check if a value is a number by using the `isNaN` function. 
+* For average, you can count all restaurant values and not just ones with a valid score number.
+  
+
+
+### Most frequent grade in Brooklyn
+
+* Go through each restaurant in Brooklyn and note which grade occurs the most number of times.
+* Ignore the blank grade ("_")
+
+```
+The most frequently occuring grade in Brooklyn is A!
+```
+
+### Boroughs ranked by A grades
+
+* Rank each borough by the number of A grades.
+
+```
+1. Brooklyn has 94 A grades
+2. Manhattan has 68 A grades
+3. Queens has 59 A grades
+4. Bronx has 42 A grades
+5. Staten Island has 21 A grades
+```
+
+### Percentage of Chinese restaurants in Queens
+
+* Find what % of all restaurants in Queens are Chinese restaurants. Check that the Cuisine is "Chinese"; format to have at least two decimal places.
+* Example output below:
+
+```
+Of all the restaurants in Queens, 17.33% are Chinese restaurants.
+```
+
+### Best restaurants in Manhattan
+
+* Go through each restaurant in Manhattan and find the ones with the lowest rating and show the best 3. Example output:
+* Skip restaurants with a blank score and scores < 0
+```
+The best restaurants in Manhattan are:
+1. Bubba Gump Shrimp Co.
+2. Halal Guys.
+3. Olive Garden.
+```
+(actual results might be different, these are examples)
+
+### Return Value
+
+All of the analytics should be coalesced into a single large string representing the analytic report.
+
+This string should be returned by your `processRestaurantsData` function in your module, `restaurants.js`
+
+### Calling processRestaurantsData
+
+Now that you've finished your function, you can try calling it on your data from `report.js`
+
+1. In report.js: require the module that you created (`restaurants.js`).
+2. Use your function on the data that you parsed from reading in the `DOHMH_New_York_City_Restaurant_Inspection_Results.csv` file that you opened earlier.
+3. Print out the resulting string.
+4. You can compare your output with the example output below
+
+```
+Average score of restaurants in Staten Island: 17.21
+Average score of restaurants in the Bronx: 15.21
+Hence, the Bronx has better food than Staten Island.
+
+The most frequently occuring grade in Brooklyn is A!
+
+Boroughs ranked by A grades:
+1. Brooklyn has 94 A grades
+2. Manhattan has 68 A grades
+3. Queens has 59 A grades
+4. Bronx has 42 A grades
+5. Staten Island has 21 A grades
+
+Of all the restaurants in Queens, 17.33% are Chinese restaurants.
+
+The best restaurants in Manhattan are:
+1. Bubba Gump Shrimp Co.
+2. Halal Guys.
+3. Olive Garden.
+```
+
+## Part 3 - Retrieve JSON from URL
+
+### Setup for Retrieving JSON
+
+In this part, you'll be setting up your project to work with JSON/CSV data from a url:
+
+1. Install the requests library in your project's root folder: `npm install --save request` (similar to installing `readline-sync` in the previous assignment)
+2. Add the module to the beginning of `report.js` using `require`
+3. __Comment out or delete reading from a local file. You can modify the code for the previous part directly to do this.__ 
+
+
+### Retrieve and Process JSON 
+
+Instead of reading a local file, __modify your program__ so that it pieces together all of the data by retrieving partial data sets in json files. The output should be similar, but you'll have to write the part that requests the json files, parses the data out of each file data, and only runs the report when all of the files have been downloaded and parsed.
+
+1. [Read the documentation](https://github.com/request/request) to see how to use the requests module (or see the [slides](../slides/js/js-node-npm-debug-git.html#/6))
+	* Notice that the data is only available within the callback that you pass in to calling `request` (much like using readFile)
+	* Again, a __callback__ is a function passed as an argument to another function... the callback will be invoked / executed at a later time, when some event is triggered
+	* In the case of `request`, it's the function that you pass in as the 2nd argument
+2. Remove the part of your program that reads a local file
+3. Instead, use request to download the first json file in the pinned piazza post
+4. Notice that the json file has two fields `data` and `next`
+	* `data` is a list of objects, with each object representing an inspection row
+	* `next` is the name of the next file to retrieve
+5. First try downloading just one file and running your report (the numbers should differ from what you previously had)
+6. Once you have that working...
+	1. Instead of running your report immediately...
+	2. Store the parsed restaurant data (in memory, in a global Array or as an argument that gets continually passed)
+	3. Retrieve the next url to get more data (that is, use the `next` field to get the name of the next json file to retrieve)
+	4. Again, parse the file... and add the data to the data you've already saved
+	5. Continue doing this until there is no more `next` field
+	6. Once you've retrieved all of the data, run your report... it should the same as it did before!
+	7. Check the length of your Array and make sure it has the same number of entries as part 2.
+
+
+```
+Average score of restaurants in Staten Island: 17.21
+Average score of restaurants in the Bronx: 15.21
+Hence, the Bronx has better food than Staten Island.
+
+The most frequently occuring grade in Brooklyn is A!
+
+Boroughs ranked by A grades:
+1. Brooklyn has 94 A grades
+2. Manhattan has 68 A grades
+3. Queens has 59 A grades
+4. Bronx has 42 A grades
+5. Staten Island has 21 A grades
+
+Of all the restaurants in Queens, 17.33% are Chinese restaurants.
+
+The best restaurants in Manhattan are:
+1. Bubba Gump Shrimp Co.
+2. Halal Guys.
+3. Olive Garden.
+```
+Lint, commit and push your code!
 </div>
 
 </div>

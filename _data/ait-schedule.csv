@@ -116,9 +116,7 @@ Installation
  
  [{{ site.book_js_5 }}]({{ site.book_js_5_link }})
  
- * [Chapter 5 - Higher Order Functions](http://eloquentjavascript.net/05_higher_order.html)","<!-- __Due Monday morning 9/21, by 11am__ 
- 
- * Quiz #5 -->",
+ * [Chapter 5 - Higher Order Functions](http://eloquentjavascript.net/05_higher_order.html)",,
 ,,4,Sep-16,Wed,* Objects and Prototypes,"* [Objects and Prototypes, Classes](slides/05/prototypes.html)
 * [Objects in JavaScript Summary](slides/05/objects-review.html)
 * [Where Not to Use Arrow Functions](slides/05/not-arrow.html)","[{{ site.book_js }}]({{ site.book_js_link }})
@@ -169,10 +167,13 @@ MDN Articles on HTTP
 Net Module Review
  
  * [Create Server](https://nodejs.org/api/net.html#net_net_createserver_options_connectionlistener)
-","
+","__Due Wednesday morning 9/23, by 11am__ 
+ 
+ * Quiz #5 
+
  __Due Monday 9/28 at 11pm:__
 
-* Homework #2 to be posted",
+*  [Homework #2](homework/02.html)",
 y,,6,Sep-23,Wed,"* A Simple Web Server Continued / Our ""Framework""
 * Routing
 * Node HTTP Module","* [HTTP Summary](slides/07/http-summary.html)

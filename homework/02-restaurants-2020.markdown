@@ -7,7 +7,7 @@ title: CSCI-UA.0480 - Homework #2
   <div class="panel-heading">Homework #2</div>
   <div class="panel-body" markdown="block">
 
-# Higher Order Functions: Exercises and Processing Data - __Due xxxxx__
+# Higher Order Functions: Exercises and Processing Data - Due __Sep 28th, by 11PM__
 
 ## Overview
 
@@ -30,15 +30,15 @@ As you write your code, make sure that you make at least four commits total (mor
 
 * the commits should be meaningful (that is, do not just add a newline, commit and push to make up the requirements for commits).
 * make sure your commit messages describe the changes in the commit; for example:
-  * add solutions to problem 2 and 3 of part 1
-  * fix a bug that prevented reading of csv file
+	* add solutions to problem 2 and 3 of part 1
+	* fix a bug that prevented reading of csv file
 
-```
+		```
 git add <files>
 git commit -m 'your commit message'
 ```
 * push your code frequently
-```
+		```
 git push
 ```
 
@@ -69,7 +69,7 @@ Implement functions that use JavaScript features such as:
 * optionally arrow functions
 * Array methods: 'filter', 'map', 'reduce'
 
-Go through the functions in order; the concepts explored build off one-another, and the functions become more and more challenging to implement as you go on.
+__No type checking of incoming arguments is required unless explicitly mentioned in instructions__ 
 
 __Do not use__:
 
@@ -89,22 +89,21 @@ __There will a small (-2) penalty every time one is used__. (Homework is 100 poi
 	* create a `package.json` by using `npm init`
     * make sure that `mocha`, `chai`, and `eslint` are still installed (similar to previous assignment)
 
-```
+		```
 npm install -g mocha
 npm install --save-dev eslint
 npm install --save-dev chai
 npm install --save-dev eslint-plugin-mocha
 ```
-
-* you'll also need a few additional modules installed locally for the unit tests to run:
-        * finally, install sinon and mocha-sinon locally for mocking `console.log` (these are for unit tests)
-        * `npm install --save-dev sinon`
-        * `npm install --save-dev mocha-sinon`
-1. implement functions below in __hoffy.js__
-2. make sure you export your functions as you implement them so that...
-3. you can run tests as you develop these functions (again, the tests are included in the repository):
+	* you'll also need a few additional modules installed locally for the unit tests to run:
+		* finally, install sinon and mocha-sinon locally for mocking `console.log` (these are for unit tests)
+		* `npm install --save-dev sinon`
+		* `npm install --save-dev mocha-sinon`
+2. implement functions below in __hoffy.js__
+3. make sure you export your functions as you implement them so that...
+4. you can run tests as you develop these functions (again, the tests are included in the repository):
     `mocha tests/hoffy-test.js`
-4. also remember to run eslint (there's a `.eslintrc` file included in the repository):
+5. also remember to run eslint (there's a `.eslintrc` file included in the repository):
     `node_modules/.bin/eslint src/*`
 
 ### Functions to Implement
@@ -113,7 +112,7 @@ npm install --save-dev eslint-plugin-mocha
 
 <hr>
 
-### `makeSet(num_1, num_2, ..., num_n)`
+### `makeSet(num_1, num_2 to num_n)` (use appropriate syntax to accept any number of arguments)
 
 __Parameters:__
 
@@ -125,7 +124,7 @@ __Returns:__
 
 __Description:__
 
-A `Set` is a common data structure which only contains unique elements. In this problem, we want to convert any given array into a `Set`, this means we want to remove duplicates from the original array.
+A `Set` is a common data structure which only contains unique elements. In this problem, we want to convert any given series of numbers into a `Set`, this means we want to remove duplicates from the original incoming arguments and return as an `Array`. Assume than an empty `Array` or `Array` of `Number`s is passed in; no need to check types.
 
 __Examples:__
 
@@ -140,24 +139,32 @@ __Hint:__
 
 <hr>
 
-### `findIndex(arr, num)`
+### `findIndex(arr, num, compareFunc)`
 
 __Parameters:__
 
 * `arr` - an `Array`
-* `num` - a `Number` that we are looking for in the array 
+* `num` - a value that we are looking for in the array 
+* `compareFunc` - a function used to determine if an element in `arr` is the one that we're looking for
+	* has two parameters, `value1` and `value2`
+	* returns a boolean: `true` if both values should be treated as equal or `false` otherwise
 
 __Returns:__
 
-* an array of all indices of the number in the array [0 indexed]
-* if the number is not in the array, return -1 (in an array)
+* an `Array` of all indices of `num` in the Array, `arr` [0 indexed]
+* if the value is not in the `Array`, return `-1` in an array: `[-1]`
+
+__Description__
+
+Collects indices of every element in `arr` that returns `true` when passed into `compareFunc` along with `num`. Assume the appropriate types are passed in. No type checking is required.
 
 __Examples:__
 
 ```
-    findIndex([1, 2, 4, 3, 5], 2); // [1]
-    findIndex([1, 2, 4, 3, 5], 8); // [-1]
-    findIndex([1, 2, 4, 3, 2, 5, 3, 7, 2], 2); // [1, 4, 8]
+    findIndex([1, 2, 4, 3, 5], 2, (a, b) => a === b); // [1]
+    findIndex([-3, -2, -1, 0, 1, 2, 4, 3, 5], 2, (a, b) => a === b || -a === b); // [1, 5]
+    findIndex([1, 2, 4, 3, 5], 8, (a, b) => a === b); // [-1]
+    findIndex([1, 2, 4, 3, 2, 5, 3, 7, 2], 2, (a, b) => a === b); // [1, 4, 8]
 ```
 
 <hr>
@@ -241,6 +248,10 @@ __Returns:__
 __Description:__
 
 This function demonstrates using functions as an argument or arguments to another function. It calls function, `fn`, `n` times, passing in the argument, `arg` to each invocation / call. It will ignore the return value of function calls. Note that it passes in only one `arg`.
+
+__Hint:__
+
+Write a recursive function within your function defintion to implement repetition.
 
 __Examples:__
 
@@ -563,10 +574,10 @@ In situations like these, you'll need to parse the numerical value from the stri
 ### Implementation Requirements
 
 1. When creating your report in `processRestaurantsData`, you must use all of the following Array methods at least once each in your program:
-    * `forEach`
-    * `filter`
-    * `map`
-    * `reduce`
+    * `forEach` (note that you cannot use `break` in `forEach`
+    * `filter` - use the return value
+    * `map` - use the return value
+    * `reduce` - use the return value
     * There will be a small penalty for each one not used (-2).
     * HINT: A typical pattern is to always use map 99% of the time, so you never accidentally get rid of or mess up the data, except when you're doing your first pass through the data to clean it up. 
 	
