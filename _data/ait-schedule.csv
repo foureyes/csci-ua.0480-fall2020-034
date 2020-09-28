@@ -174,7 +174,7 @@ Net Module Review
  __Due Monday 9/28 at 11pm:__
 
 *  [Homework #2](homework/02.html)",
-y,,6,Sep-23,Wed,"* A Simple Web Server Continued / Our ""Framework""
+,,6,Sep-23,Wed,"* A Simple Web Server Continued / Our ""Framework""
 * Routing
 * Node HTTP Module","* [HTTP Summary](slides/07/http-summary.html)
 * [Sockets Review](slides/07/sockets-review.html)
@@ -184,18 +184,14 @@ Coding Demo
 * [echoServer.js](examples/class07/echoServer.js) (simple tcp/ip server)
 * [demo.js](examples/sp19-class07/demo.js) (basic http server built on top of net module)
  
- 
-Sample Code With File I/O
+ Sample Code With File I/O
  
 * [webServer.js](examples/class07b/webServer.js) (same as demo.js, but reads file from file system!)
 * public/[harry.html](examples/class07b/public/harry.html)
 * public/[mouse.html](examples/class07b/public/mouse.html)
  
- 
-<!--Coding Demo fa19
- 
-* review net module
-* routing
+ <!--Coding Demo fa19
+ * routing
 * sending a text file
 * sending an image
 * post
@@ -208,30 +204,14 @@ Example Set 1
 * [webServer.js](examples/class07/webServer.js)
 * public/[homer.html](examples/class07/public/homer.html)
 * public/[pika.html](examples/class07/public/pika.html)
- 
-Example Set 2
- 
-* [webServer.js](examples/class07b/webServer.js)
-* public/[harry.html](examples/class07b/public/harry.html)
-* public/[mouse.html](examples/class07b/public/mouse.html)
- 
- 
- 
- 
+  
 * [Node's HTTP Module](slides/07/node-http.html)
 * [Project Setup](slides/08/setup.html)
--->",See previous classes on HTTP and network programming,"__Due Monday 10/5 at 11pm:__
- 
- 
-Homework #03 to be posted
+→",See previous classes on HTTP and network programming,,
+,,7,Sep-28,Mon,"* Server-side Web Framework
+* Project Layout","See net Module Demo Code from Previous Class
 
- <!--
- 
-* [Homework #03](homework/03.html)
-
--->",
-y,,7,Sep-28,Mon,"* Server-side Web Framework
-* Project Layout","Slides
+Slides
  
  * [Express](slides/08/express.html) 
 
@@ -246,8 +226,11 @@ Express Documentation
 * [Express Hello World](https://expressjs.com/en/starter/hello-world.html)
 * [Express Basic Routing](https://expressjs.com/en/starter/basic-routing.html)
 * [Express Routing](https://expressjs.com/en/guide/routing.html) (up to, but not including route paths)
-* [Express Static Files](https://expressjs.com/en/starter/static-files.html)",,
-y,,8,Sep-30,Wed,"* Server-side Web Framework Continued
+* [Express Static Files](https://expressjs.com/en/starter/static-files.html)","__Due Monday 10/5 at 11pm:__
+ 
+ * [Homework #03](homework/03.html)
+",
+,,8,Sep-30,Wed,"* Server-side Web Framework Continued
 * Templating","* (See previous slides on Express)
 * [Templating](slides/09/templating.html)
 * [Middleware](slides/09/middleware.html)
@@ -262,11 +245,11 @@ Express Documentation
 
 [{{ site.book_js_6 }}]({{ site.book_js_6_link }})
 
-* [Chapter 7. Important External Modules - Express - Middleware](https://www.oreilly.com/library/view/node-up-and/9781449332235/ch07.html#id3221848) ","__Due Monday 3/2 at 11pm__
+* [Chapter 7. Important External Modules - Express - Middleware](https://www.oreilly.com/library/view/node-up-and/9781449332235/ch07.html#id3221848) ","__Due Wednesday morning 10/7, by 11am__ 
  
-* [Homework #4](homework/04.html)
+ * Quiz #6 
 ",
-y,,9,Oct-5,Mon,* Forms,"* Review Middleware
+,,9,Oct-5,Mon,* Forms,"* Review Middleware
 * [Express Request and Response](slides/09/request-response.html) (start [With Web Server/Web App](slides/09/request-response.html#/7))
 * GET and POST / Request and Response 
 * [Form Handling](slides/10/forms.html)
@@ -282,8 +265,12 @@ y,,9,Oct-5,Mon,* Forms,"* Review Middleware
  
 MDN Articles on Express
 
-* [Forms](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms) (up to validation)",,
-y,,10,Oct-7,Wed,"* Cookies
+* [Forms](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms) (up to validation)","<!--
+__Due Monday 10/12 at 11pm__
+ 
+* [Homework #4](homework/04.html)
+-->",
+,,10,Oct-7,Wed,"* Cookies
 * Sessions 
 * NoSQL Database
 ","* Review form handling, middleware
@@ -309,10 +296,7 @@ MongoDB Documentation
 * [MongoDB Types](https://docs.mongodb.com/manual/core/documen://docs.mongodb.com/manual/reference/bson-types/)
 * [MongoDB Query Documents](https://docs.mongodb.com/manual/tutorial/query-documents/)
 * [MongoDB Create, Read, Update, Delete](https://docs.mongodb.com/manual/crud/)
-* [MongoDB Insert](https://docs.mongodb.com/manual/tutorial/insert-documents/)","__Due Monday 3/9 at 11pm__
- 
-* [Homework #5](homework/05.html)
-",
+* [MongoDB Insert](https://docs.mongodb.com/manual/tutorial/insert-documents/)",,
 y,,11,Oct-12,Mon,"* NoSQL Database Continued
 * Object Document Mapper
 * Database Design
@@ -348,7 +332,12 @@ MongoDB Documentation
 * [MongoDB Modeling Relationships / Examples](https://docs.mongodb.com/v3.2/applications/data-models-relationships/)
 * [Mongoose Embedded Documents - Sub Docs](http://mongoosejs.com/docs/subdocs.html) 
 * [Mongoose Document References - Mongoose Population](http://mongoosejs.com/docs/populate.html) 
-* [MDN TLS](https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security)","<!--
+* [MDN TLS](https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security)","__Due Monday 10/19 at 11pm__
+ 
+* [Homework #5](homework/05.html)
+
+
+<!--
 
  __Due Wednesday 10/16 at 11pm__ 
 
