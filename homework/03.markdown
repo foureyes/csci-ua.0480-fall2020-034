@@ -26,7 +26,7 @@ hr {
 	<div class="panel-heading">Homework #3</div>
 	<div class="panel-body" markdown="block">
 
-# A Simple Web Server, Due <s>Friday, Feb 21st</s> Monday, Feb 24th at 11PM 
+# A Simple Web Server, __Due Monday, Oct 5th at 11PM__
 
 
 ## Homework Policy
@@ -125,7 +125,7 @@ Use only the `net` module and the `fs` module to create a server that:
 	* Use [`fs.access` to determine if the file exists in your `rootDirectory`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
 	* If it doesn't exist, send back a `404`
 6. Determine whether the path is a directory or a file 
-	* Use the following functions, objects and methods to do this
+	* Use the following functions, objects and methods to do this (each name below is a link to nodejs documentation)
 		* [`fs.lstat`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_lstat_path_options_callback)
 		* `lstat`'s callback is invoked with a `stats` object, from which you can call `isDirectory` and `isFile`
 		* [`stats.isDirectory`](https://nodejs.org/docs/latest/api/fs.html#fs_stats_isdirectory)
