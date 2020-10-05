@@ -4,129 +4,76 @@ title: CSCI-UA.0480 - Homework 4
 ---
 
 <style>
-img {
-	width: 100%;
+h1.warning {
+	background-color: #eaa;
 }
 </style>
 
 <div class="panel panel-default">
-<div class="panel-heading">Homework #4</div>
-<div class="panel-body" markdown="block">
+	<div class="panel-heading">Homework #4</div>
+	<div class="panel-body" markdown="block">
 
-# ait.tx - transactions, blocks and Express! Due 3/2 at 11pm
+# bears.ai Due 10/17 at 11pm
+
 
 ## Overview
 
-How your app might look like when you complete the assignment!
-
-
-(Right click and choose open image in new tab to see larger version)
-
-![example interaction](../resources/img/hw04-transactions/full-interaction.gif)
 
 ### Description
 
-In this homework assignment we will be creating a basic web application using the `express` framework and `handlebars` for templating. We'll also work with reading data from disk into memory, static files, and we'll write some basic middleware.
+You've just had the most brilliant idea. An AI that distinguishes between dangerous and non-dangerous bears! You don't want your kids confusing teddy bears with brown bears, do you?
 
-So again the main topics for this assignment are:
+You go to a Venture Capital Fund with this idea and they say they are ready to invest $100 million because the baby-bear problem is getting out of hand! But they ask you where are you getting the data for the AI from?
 
-* route handling
-* templating
+This is our first step towards that $100 million! We want to create a site that aggregates and searches for different types of bears! In this homework you'll be working with:
+
 * serving static files
-* in-memory data storage 
 * middleware
+* handling and creating forms: GET and POST
+* storing and managing data in-memory
 
-The application you'll be creating will serve as a very basic explorer of transaction data that you are provided with in `.json` files. First, a single transaction is simply a transfer of some currency / token from one user to another (i.e. PayPal, Bitcoin, etc). In addition to the 'from' and 'to' fields that tell us where a transaction has gone, a transaction usually contains a timestamp for when the transaction has occurred, perhaps some identifier, and the actual amount. Here is an example transaction that we can represent in `json`:
+__For extra credit__: We will also be working with
 
-```$xslt
-{
-      "id": 1003,
-      "timestamp": "2020-02-01T00:00:00",
-      "from": "employer",
-      "to": "employee-1",
-      "amount": 25000
-}
-```
+* file uploads
+* file writing
 
-For the purposes of efficient storage, replication, and other considerations, transactions are rarely stored all in a single array or list, they are frequently partitioned into *blocks*. Blocks each contain a handful of transactions and have an identifier themselves. An important property of blocks that is also reflected in our data: __in order to maintain order in storing transactions, every block of transactions maintains a pointer to the previous block of transactions that is the name of the .json file representing the block__.
+You'll be creating 3 pages:
 
-Here is a diagram depicting this visually (can also think of this as a `LinkedList` data structure):
+* __home__ - <code>/</code>: home page that displays all of the bears submitted on the site. This is what we'll show those VC folks!
+* __search__ - <code>/search</code>: search page which lets all the bears be searched by label that is given to a bear, a minimum weight (greater than or equal to) of the bear.
+* __add__ - <code>/add</code>: a page that allows a user to submit a new bear image with a label and weight. 
 
-(Right click and choose open image in new tab to see larger version)
+Your directory layout should look something like the following __once you're done with the assignment__:
 
-![data](../resources/img/hw04-transactions/data-diagram.jpg)
-
-And an example block with a couple of transactions:
-
-```$xslt
-
-{
-  "transactions":  [
-    {
-      "id": 1002,
-      "timestamp": "2020-01-01T10:00:00",
-      "from": "account-1",
-      "to": "employee-pool-1",
-      "amount": 100000
-    },
-    {
-      "id": 1003,
-      "timestamp": "2020-02-01T00:00:00",
-      "from": "account-2",
-      "to": "employee-pool-1",
-      "amount": 25000
-    },
-    {
-      "id": 1004,
-      "timestamp": "2020-03-01T00:00:00",
-      "from": "account-1",
-      "to": "employee-pool-2",
-      "amount": 1000
-    }
-  ], "previous": "0x1111" }
-
-```
-
-Thus, we can imagine that as more and more transactions are registered in our system, we can keep creating new blocks to hold those new transactions. To do that we can just keep creating `json` files with lists of transactions. But how do we figure out the order in which blocks came in? That is where we use the `previous` pointer to the name of the previous block.
-
-An important observation is that the first block __does not__ have a pointer to the previous block (and in our json, this means that the first block will not have `previous` property).
-
-Take a look at the `.json` files with this block/transaction formatted data provided for the assignment for more details - you should see how the data forms a chain of 3 blocks and the `previous` field points to the preceding block except for in a single `.json` file i.e. block that we designated the starting block.
-
-
-### Requirements
-
-You'll be creating a web site with 4 pages:
-
-* __All Blocks__ - `/`: 'home' page that displays all of the blocks and their transactions in the correct 'chain' order (more on this later)
-* __Latest Block__ - `/latest/block`: a page that displays data for a single __block__ that is the latest block in the 'chain' order
-* __Latest Transaction__ - `/latest/tx`: a page that displays data for a single __transaction__ that is the latest transaction by the __timestamp__ field
-* __Random Transaction__ - `/random`: a page that displays data for a single __transaction__ randomly picked from __all__ transactions across __all__ blocks
-
-
-Your directory layout should look like the following __once you're done with the assignment__:
-
-```
+<pre><code data-trim contenteditable>
 ├── app.js
+├── labeled_bears
+│   ├── b1.json
+│   ├── b2.json
+│   └── b3.json
 ├── package-lock.json
 ├── package.json
 ├── public
 │   ├── css
 │   │   └── main.css
 │   └── img
-│       └── logo.svg
-├── transaction.js
-├── transactions
-│   ├── 0x0FA.json
-│   ├── 0x1111.json
-│   └── 0xAA.json
+│       └── header.png
+│       └── bears
+│       	└── blackbear1.jpg
+│       	└── brownbear.jpg
+│       	└── teddy1.png
+├── bears.js
 └── views
-    ├── all.hbs
-    └── latest-block.hbs
-    └── latest-txt.hbs
+    ├── add.hbs
+    └── home.hbs
+    └── search.hbs
     └── layout.hbs
-    └── random.hbs
-```
+</code></pre>
+
+### Example Interaction
+
+<!-- TODO -->
+![example interaction](../resources/img/hw04_bears/hw04_bears_example_interaction.gif)
 
 ### Submission Process
 
@@ -137,25 +84,25 @@ Your directory layout should look like the following __once you're done with the
 ###  Make at Least 4 Commits
 
 * Commit multiple times throughout your development process.
-* Make at least 4 separate commits - (for example, one option may be to make one commit per part in the homework).
-
+* Make at least 4 separate commits
 
 ## Part 1 - Setup
 
 ###  Installing Dependencies
 
 * create a <code>package.json</code> (a `package-lock.json` should be created for you as well once you start installing modules)
-* __install__ the following __dependencies__ (make sure you use the `--save` option):
+* __install__ the following __dependencies__ (make sure you use the <code>--save</code> option):
 	* <code>express</code>
 	* <code>hbs</code>
+	* <code>multer</code>
 
 ###  .gitignore
 
-* create a `.gitignore`
-* ignore the following files / directories:
-	* `/node_modules`
+* create a <code>.gitignore</code>
+* ignore the following files:
+	* <code>node_modules</code>
 	* any other files that aren't relevant to the project... for example
-        * `.DS_Store` if you're on MacOS
+        * <code>.DS_Store</code> if you're on OSX
         * etc.
 
 ### linting
@@ -170,300 +117,270 @@ Your directory layout should look like the following __once you're done with the
 
 ###  Enabling Static Files
 
-First, we would like to make sure that we can serve static content on our site - like css and images interleaved with our HTML. So let's get started.
+First, we would like to make sure that we can serve static content on our site - like css and images. So let's get started.
 
 * create the following directory / folder structure in your project's root directory
-	* `public`
-	* `public/css`
-	* `public/img`
-* add a blank css file in `public/css/main.css`
-* add some sort of logo image in `public/img/logo.svg` (can be any format really)
-* create a basic express skeleton application in `app.js`
-	* make sure that your application is __served over port 3000__
-	* __after calling `app.listen(3000)`__
-		* print out `"server started; type CTRL+C to shut down"` to the console (the terminal window)
-		* this will give you information on whether your server has started correctly 
-* add the appropriate `require`s (express, path, etc.) and middleware to enable static file serving:
-	* refer to class slides for reminders / code snippets on how to do this
-	* make sure it's something like `app.use()`
+	* <code>public</code>
+	* <code>public/css</code>
+	* <code>public/img</code>
+* add a blank css file in <code>public/css/main.css</code>
+* add an image that has something to do with bears in <code>public/img/header.png</code>
+* create a basic express skeleton application in <code>app.js</code>
+	* make sure that your application is __served over port 4000__
+	* __after calling `app.listen(4000)`__
+		* print out "Server started; type CTRL+C to shut down " to the console (the terminal window)
+		* this will give you feedback that your server has started correctly 
+* just add the appropriate requires (express, path, etc.) and middleware to enable static file serving:
+	* refer to class slides for reminders / snippets on how to do this
 * test that both the css files and image work
-	* for example, try to go to `http://localhost:3000/img/logo.svg` in your browser
-	    * your image should be displayed in browser
+	* for example, try to go to <code>http://localhost:3000/img/header.png</code> in your browser
+	* -> your image should be displayed in browser
 
 
-###  Creating the `"All Blocks"` initial page
+###  Creating a Home Page
 
-Now that we can server static files including our css file to make pages pretty, lets create the first page for our site that will display all of our data on disk (the blocks and their transactions).
+Now that we can serve static files including our css file to make pages pretty, lets create a 'main' homepage for our site that will display all the bears.
 
-First let's setup templating so we can render our pages
-
-* we will be using handlebars (`hbs`) as our templating engine, so do the required steps to set that up
+* for the home page, your app should accept <code>GET</code> requests on the path, <code>/</code>
+* we will be using handlebars as our templating engine, so do the required steps to set that up
 	* get all the requirements and config setup
-	* create the appropriate `views` folder, along with an initial layout file:
-```$xslt
-        └── views
-            └── layout.hbs
-```
-* in your `layout.hbs`, add the html that will be used on every page that we create (refer to slides for more)
+	* create the appropriate views folder, along with an initial layout file:
+		* <code>views</code>
+        * <code>views/layout.hbs</code>
+* in your <code>layout.hbs</code>, add the html
 * recall that this surrounding html will go on every page
-	* add a reference to include your `main.css` stylesheet (so that each other `.hbs` page has it too)
-	* include a header containing both your static image and the title of the site, __ait.tx__ 
-    * additionally, add a 'navigation (nav) bar' consisting of the links that will let you navigate across the 4 pages of the site:
-	    * a link to the All Blocks (`/`) - root url
-	    * a link to the Latest Block page (`/latest/block`)
-	    * a link to the Latest Transaction page (`/latest/tx`)
-	    * a link to the Random Transaction page (`/random`)
-	* we will be creating route handlers for all of these pages later
-* Important! - don't forget `body`, surrounded by triple curly braces, or else other templates are not going to get rendered
-* now that you have the `layout.hbs`, add your first page template (it's up to you how you call it)
-    * add an `<h2>` element that says `"Tx Blocks"` to this template
+	* add a reference to include your <code>main.css</code> stylesheet (so that each other <code>.hbs</code> page has it too)
+	* include a header containing both your <code>header.png</code> image and the title of your site, __bears.ai__
+    * additionally, add a 'nav bar' consisting of two links that will let you navigate across the 2 pages in your site:
+	    * a link to the home / main page that is a list of all bears (<code> / </code>) - root url
+	    * a link to __a page that lets us search for bears__  (<code> /search </code>)
+	    * a link to __a page that lets us add a new bear__  (<code> /add </code>)
+	* Important! - don't forget <code>body</code>, surrounded by triple curly braces, or else other templates are not going to get rendered
+* now that you have the layout, add your home page template (it's up to you how you call it)
+    * add an <code>h2</code> element that says `My Bears` to this template
     * you will add more html and templating to this file later
-* add some css to `main.css` to change the styles on the page. Some examples / inspiration:
-    * change the font, font style (bold, underline)
+* set up a route and a <code> render </code> call so that going to the root url via a <code>GET</code> request shows the rendered template
+* add some css to change the styles on the page. Some examples / inspiration (you can totally show your creativity here):
+    * change the font
     * change the background color
     * change the font color
-    * add padding, alignment
+    * add padding, center alignment
     * etc.
-
-Now lets implement the initial version of the route handler on the server for this page 
-
-* create a route handler in `app.js` that will listen for `GET` requests on `\`
-* add a `render` call so that going to the root url via a `GET` request shows the rendered template (only `h2` and whatever is in `layout.hbs` so far)
 
 
 Here's an example of what the page could look like (you don't have to use the same exact styles, but add enough styles so that you can see that the style sheet is correctly served and applied to the html):
 
-(Right click and choose open image in new tab to see larger version)
+![styled homepage](../resources/img/hw04_bears/hw04_basic.png)
 
-![screenshot](../resources/img/hw04-transactions/1-screenshot.png)
+If you add stuff to your css file but no styles change, check the console for errors and the html in <code> layout.hbs </code> to make sure the path to the css file is correct.
 
-If you add stuff to your css file but no styles change, check the console for errors and the html in  `layout.hbs` to make sure the path to the css file is correct.
+## Part 3 - Middleware and Logging
+
+In order to help us debug our code on backend during development, let's set up some initial logging in form of middleware. We want to log __for each request__:
+
+* The method (GET, POST)
+* The route
+* The query string
+
+First, activate the body parsing middleware (`express.urlencoded`) by passing it to `app.use`; this will allow you to access the content of the request's body.
+
+Additionally, create a custom middleware function and <code>app.use</code> it in <code>app.js</code>. Hint: don't forget to call <code>next()</code>, also to print objects, you'll need JSON.stringify.
+
+Again, this function __has to__ print
+
+* the request's __method__,  __path__, and request's __query string__
+* Example:
+    * Method: GET 
+    * Path: /
+    * {}
 	
-## Part 3 - Reading Data 
+## Part 4 - Displaying the bears
 
-Now that we have created a basic skeleton express app with a route handler and some rendered HTML, lets write the code that will read in the transaction data in the `json` files as outlined in the Overview section from disk and save it in-memory.
+So far our homepage is very boring and doesn't show anything, so lets make it display some bears. 
 
-If it's useful, you can create classes to hold transactions (since we're parsing objects directly from json, this isn't entirely necessary). If you're considering this:
+We will store the data in-memory, and display bears in a list format. Each bear has 3 components: 
 
-* reasonable classes could be `TransactionBlock` and `Transaction`
-* a `TransactionBlock` needs to have at least 3 properties:
-    * the name of the current block (this is the __file name__ of the `json` file so for a file `0x000F.json` the name of the block is `0x000F`)
-    * the name of the previous block
-    * list of transactions that are part of this block (could be an `Array` of objects of class `Transaction`)
-* in `transaction.js` create classes to store the parsed data in an organized manner
-    
-Here is an example of what creating an instance of each class might look like:
+1. the image URL
+2. the label (type of bear)
+3. the weight of the bear (in lbs.)
 
-```$xslt
+### Bear Class
 
-// constructor: transaction id, timestamp, to, from, amount
-const transaction1 = new Transaction(1, "2020-01-01T10:00:00", "user1", "user2", 10);
-const transaction2 = new Transaction(2 "2020-02-01T10:00:00", "user2", "user3", 20);
+In `bears.js`, create a class that represents a bear. Your class should behave as follows:
 
-// constuctor: transactions, name of current block, name of previous block
-const txBlock1 = new TransactionBlock([transaction1, transaction2], "0x000F", "0x00FF");
+```
+// the constructor accepts:
+// the image URL
+// the label
+// the weight of the bear
+const bear = new Bear(
+  'http://www.bearconservation.org.uk/wp-content/uploads/2017/08/Kodiak_brown_bear_FWS_18383.jpg', 
+  'brown bear',
+  2
+)
+
+// the constructor results in an object with the following properties / methods:
+console.log(b.imagePath);  // http://www.bearconservation.org.uk/wp-content/uploads/2017/08/Kodiak_brown_bear_FWS_18383.jpg
+console.log(b.label);  // brown bear
+console.log(b.weight);  // 450
 ```
 
-Again... creating these classes is optional.
+⚠️ Export the class you make... and bring it into `app.js` so that your web app can create `Bear` instances!
 
-You'll have to read the `.json` files from disk and store them in memory. Note that each `.json` file
-is a block (there will not be more than one block per file) so 3 files equals 3 blocks, but the number of transactions per block may vary and note that not every block will have the `previous` value in the JSON.
+### Initial data
 
-* in `transactions.js` write a function called `loadAllTransactions` 
-* this function will read all `json` files in a path, parse them, and populate an `Array` of transaction block objects
-* because this involves file io, to execute some action after all transactions have been loaded, you'll have to include a callback as one of the parameters 
-* `loadAllTransactions` can be implemented a few different ways; for example, you can use: 
-	1. a function with 2 arguments
-		* path for where the files are on disk
-		* a callback when the reading of files is complete, with the callback having a single argument -- the finished `Array` for transaction blocks
-	2. a function that will take 3 arguments:
-		* path for where the files are on disk
-		* an accumulator variable where the parsed data will be added to
-		* a callback when the reading of files is complete
+The initial data for the site should be stored as an `Array` of `Bear` instances. This can simply be a global variable in your `app.js` file.
 
-* regardless of the function signature for `loadAllTransactions`, use recursion to read in all `.json` files in the path specified as the first argument
-* HINT: can use [`fs.readdir`](https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)
-* HINT: can use [`path.extname`](https://nodejs.org/api/path.html#path_path_extname_path) or [`.endsWith`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith) to check file extensions
-* HINT: it may be useful to contain the recursion in a helper function rather than make `loadAllTransactions` itself recursive
-* you can assume that:
-	* all `.json` files contain valid data
-	* the `previous` property in every block points to an existing file
-	* no validation is needed to for either of the cases above
-* recursion should stop once all of the file names in the directory are exhausted and read
-* the product of the recursion should be an `Array` of objects representing transaction blocks:
-	* if you're using classes, instantiate your `TransactionBlock` object with the appropriate properties
-	* ⚠️ if you're simply collecting the parsed json object, make sure to add the name to each transaction block
-	* in either case, use the file name without extension as the name of the transaction block
-* export the `loadAllTransactions` function to use in `app.js`
+The `Bear` instances should be created by reading the files located in the `labeled_bears` directory. There are 3 files initially, but your code should be able to read any number of files in the directory. Do this by using `fs.readdir` (see [the docs](https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)) and `fs.readFile`. ⚠️ __Do not use the synchronous (the ones that end in "sync") version of these functions!__ (we're doing this to practice callbacks and handling async operations...).  
 
-* add a global variable to `app.js` that will store the data as an array of `TransactionBlock`s or an equivalent class
-* depending on the signature for your `loadAllTransactions`, you can populate this global variable
-	* (2 arg version) by setting it in the callback
-	* (3 arg version) or by passing this global variable in as the second argument
-* inside the callback to `loadAllTransactions`, make sure `listen` is called and the "Server started" message is printed __after__ all of the files are read
-* use `__dirname` and `path.join`  where possible to create absolute paths so that the application is more _portable_
+The format of each file in `labeled_bears` is as follows:
 
+* It is a JSON file with three key-value pairs - `imagePath`, `label`, `weight`.
+* There can be other (junk) files in this directory. You are only supposed to read the JSON files.
+   
+The general requirements for this part are:
 
-Once done with the data loading step, this should be the flow and steps executed when the server starts:
+* list out all of the files in the directory, `labeled_bears`, that end in `.json`
+* read the code from each file and create `Bear` objects
+* save the bear objects in a global variable
+* once everything is read, print out the global variable of bears:
 
-* `loadAllTransactions()` gets called with 2 or 3 arguments
-* it uses `fs.readFile` and recursion to read every file that ends with `.json`
-    * saves every file as a transaction block
-    * and per each transaction block saves every transaction in an array
-* after the recursion completes, a global variable is populated with the data that has the structure of:
-    * `Array` of objects with each representing a transaction block
-    * each object having a field for the block name, previous block name and an `Array` of objects, each representing a single transaction
-* the server is started with `server.listen` (only when all of the files have been loaded)
-* data in the global variable is now available to all route handlers
+```
+[ Bear { imagePath: 'http://www.bearconservation.org.uk/wp-content/uploads/2017/08/Kodiak_brown_bear_FWS_18383.jpg', label: 'teddy bear', weight: '3' },
+  Bear {
+    imagePath: 'http://www.bearconservation.org.uk/wp-content/uploads/2017/08/Kodiak_brown_bear_FWS_18383.jpg',
+    label: 'black bear',
+    weight: '150' }
+]
+```
 
-⚠️ 👀 __If this part is taking too long, stub out / hard code a global Array of objects. Move on to the next part, and come back to this later__
+* modify `app.js` so that `listen` is called and the "Server started" message is printed __after__ all of the files are read
+	* this is tricky because of the async nature of reading the directory and reading each file
+	* you'll have to create one or more functions
+	* one of these functions will have a callback (the callback should essentially call `listen` and print out the server started message)
+	* the solution will involve recursion
+	* recursion should stop once all of the file names in the directory are exhausted
+	* use `__dirname` where possible to create absolute paths so that the application is more _portable_
+	* if you're unable to get the ordering right in a few tries, move on to the next part and come back to this
+	* once working, add all these files to `bears.js` and export them to be used by `app.js`
 
-
-## Part 4 - Displaying Transaction Blocks and Individual Transactions
-
-Now that you have the data loaded into memory, finish the route handler for `/` that will display data organized in blocks and with transaction data under each block. There are 2 steps to this - first is getting the data into correct 'chain' order and the second is adding the relevant handlebars templating to the `.hbs` file that you have created for this page (perhaps call it `all.hbs`)
-
-### Ordering blocks into a hierarchical chain
-
-So for the first part, the goal is to take the data currently stored in your global variable and "sort" it such that it forms a correct logical chain of blocks, i.e. 
-
-* the first block in array is the block without a `previous` reference
-* the next block is the block that has `previous` pointing to that initial block
-* and so on until all blocks are re-organized
-
-A simple algorithm comprising of a couple functions could be:
-
-* find the block (`TransactionBlock` object) that is the initial block
-* add it to a "stack" of sorts (can just be an array)
-* loop over the remaining blocks, and on each iteration
-    * compare the `name` associated with the block on top of the stack (the current block) with the `previous` property of each block iterated over
-    * you can use this to find the block that has the `previous` pointing to the current block
-    * add the found block to the top of stack
-    * repeat
   
-Then
+### Page to display the data
 
-* Call this function from either:
-	* the route handler
-	* or immediately after your application has loaded all of the transaction
-* This will result in getting the correct 'chain' order data. 
-* Add an object to the `render()` call to pass in the array of block data to handlebars, i.e. `render('template', { // your data here });` (see the next part on details regarding the template)
-
-⚠️ 👀 __As with the previous part, if sorting transactions is taking too long... stub out / hard code the ordered global Array of objects and focus on displaying the blocks through express (in the next part), and come back to this later__
-
-### Adding templating
-
-Now that you are passing in the data to handlebars, add the templating to the `.hbs` file that will display the data.
-
-* add the code to loop over the blocks in your array
-* HINT: `#each` for looping, `<ul>` and `<li>` for getting data to be displayed nicely in a list
-* recall, inside `TransactionBlock` you have access to the 3 fields: block name, previous block name, and an array of single `Transaction`'s.
-* add another nested loop to traverse all of the transactions and display them within a single block
-* within this loop add `div`s to display each transaction's data
-* for visual clarity, can separate blocks with `<hr/>`
+* pass in your bear data (in an array) to the <code> render </code> call in the route handler for the homepage so that our template has access to it
+* add html to display the bear data in an organized way
+    * HINT: can iterate through the list of bears using the <code>#each</code> helper
+    * HINT: can put each bear & it's data (label, weight) in a list item (<code>li</code>)
+    * Make sure the image is displayed directly from the URL (using the `<img src>` tag)
 
 __Reload and visually check.__
 
-Here is how your data should look like with some styling applied (doesn't have to be exact just enough to see the data clearly).
-__Note the correct order of the blocks in the chain with the initial block at the end of the list / page.__
+* Page should display the 3 initial bears along with their data in a list-like way
+* Styling does not have to be exact, just as long as you can differentiate the actual bear image, it's label, and the weight for each.
 
+![display initial data](../resources/img/hw04_bears/hw04_initial.png)
 
-(Right click and choose open image in new tab to see larger version)
+## Part 5 - Search bears
 
-![interaction](../resources/img/hw04-transactions/interaction-1.gif)
+Now that we have our data being displayed on the home/main page, let's add functionality to search for bears based on their label and a minimum weight. The server will only return bears that match __all__ of the search criteria (essentially `and`). If a search criteria is blank (empty string), do not include it as a feature to search on.
 
-## Part 5 - Latest Block and Latest Transaction
+* __In a new__ template, add a form to search for bears. 
+	* add attributes to the form tag so that...
+	* submitting the form makes a request to the same path that the form page is on
+	* the form uses the appropriate HTTP request method for the functionality of this form (it should be `GET` since it's just reading data!)
+* The form should have 2 `input` elements for entering form data, each with a `name` attribute:
+	* `labelQ` (the label)
+	* `weightQ` (the minimum weight)
+* Remember that the name of each input element shows up somewhere in the HTTP request and ... in properties of the express application's request object.
+    
+__Now, onto the server side:__
 
-### Latest / Last Block Page
+Add a route handler for the search page (e.g. <code>/search</code>) to __only__ select bears that match __all__ of the search and send it to the <code>render</code> call
 
-Add the second page of the site that will display the latest / last block in the correct 'chain' ordering. This data should be quick to access once you have the functions to order the data into the chain working; simply grab the last block once sorted.
+* if searching based on label - return only those bear labels that (this is important) __contain__ the text from the form input
+* if searching based on count of lines - return only those bears that have a weight greater than or equal to the value submitted
+* NOTE: Some of the higher order functions we used in Homework 2 will be useful here!
+    
+__Important:__
 
-Similarly to how you constructed the initial `/` page:
+⚠️ If all of the text fields are blank display all of the bears (essentially re-setting the search)
 
-* add a new route handler in `app.js` handling the `/latest/block` route
-* add the logic to get the latest block in the 'chain'
-* add the call to render, including the template file name and the data in the object passed into the template
-
-The templating part is easier here since it is just one element:
-
-* add a `.hbs` file that will correspond to this page's template
-* add the code inside of the template to display the data on a single block (can take this from `all.hbs`)
-
-And so here is how the page should look like:
-
-
-(Right click and choose open image in new tab to see larger version)
-
-![interaction](../resources/img/hw04-transactions/interaction-2.gif)
-
-### Latest Transaction Page
-
-Add the third page that will display the latest transaction that is present in the 'chain'. This is different from the latest block, since here we care about the `timestamp` on the individual `Transactions`. 
-
-* add a new route handler in `app.js` handling the `/latest/tx` route
-* add the logic to get the latest transaction
-* HINT: this can be implemented by flattening the arrays of transactions and writing a custom compare
-	* if you'd like, consider using `reduce` or [`flatmMap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) to do this (regular looping is ok too!)
-	* for sorting, it maybe helpful to...
-	* use the [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method on an `Array` of transactions
-	* ...and [convert to Date objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Examples) for the comparison function
-	* `Date` objects can be used for arithmetic, so a simple "compare" function for `sort` on dates may be: `(date1, date2) => date1 - date2`
-* add the call to `render`, including the template file name and the data in the object passed into the template
-
-Templating is very similar to the latest block page:
-
-* add a `.hbs` file that will correspond to this page's template
-* add the code inside of the template to display the data on a single transaction now (can also take this from `all.hbs`)
-
-How the page should look like displaying the transaction with the timestamp that is the latest one:
-
-(Right click and choose open image in new tab to see larger version)
-
-![interaction](../resources/img/hw04-transactions/interaction-3.gif)
-
-## Part 6 - Random Transaction
-
-Add the fourth page that will display a randomly chosen transaction from all the transactions in the chain. 
-
-* add a new route handler in `app.js` handling the `/random` route
-* add the logic to pick a random transaction from __all__ transactions across __all__ blocks
-* HINT: `Math.random()` and `Math.floor()` should come in handy
-* add the corresponding `.hbs` file rendering the transaction
- * pass in a randomly chosen transaction to the render call
-
-How the page should look like displaying randomly picked transactions:
-
-(Right click and choose open image in new tab to see larger version)
-
-![interaction](../resources/img/hw04-transactions/interaction-4.gif)
-
-## Part 7 - Basic Middleware - Logging
-
-In order to make sure you are hitting the correct endpoints when you navigate the app lets add some basic middleware
-that will, on every request handled, log to the console:
-
-* The method (only GET for this application)
-* The route (path)
-
-<strike>First, activate the body parsing middleware (`express.urlencoded`) by passing it to `app.use`; this will allow you to access the content of the request's body.</strike> (we'll use body parsing middleware in the next assignment; it's not necessary to get method and path
-
-Additionally, create a custom middleware function and `app.use` it in `app.js`. Hint: don't forget to call `next()`.
-Again, this function __has to__ print
-
-* the request's __method__ and the __path__
-* Example:
+And your console should look something like this (for the case where label and weight are specified):
 
 ```
-    Method: GET
-    Path: /latest/block
+Method: GET 
+Path: /search 
+Query: {"labelQ":"brown","weightQ":"100"}
+```
+<br/>
+<br/>
+
+As you can see, the values of the query string change based on which form we submit. You can even manually manipulate the query string in the URL bar of your browser. Nice!
+
+## Part 6 - Adding a new bear
+
+### Form
+
+We now have made our site display bears from the in-memory store, and we can search for bears based on the label, the minimum weight (greater than or equal to) that the bears have. Nice! 
+
+What's missing is the ability to add our own custom bears and have it show up in the list along with the others. Let's implement this feature.
+
+* create a new route handler in __app.js__ for <code>/add</code>
+* create a new handlebars template and add a call to <code>render</code> inside of the new route handler that renders the new template
+    * add a form to the template with 3 <code>inputs</code> and a submit button - this is how we'll add a bear
+    * All three are text fields which accepts the Image URL, Label and the Weight
+    * __Extra credit__: two of these are text fields and one is a file type which will be used to upload images!
+* __the form's method should be a <code>POST</code>__
+* the action of the form should be <code>""</code> or <code>/add</code> since we make the request to the same page (/add)
+* now that we have a new form making a <code>POST</code> request to a new URL, add a new route handler in __app.js__ to accept <code>POST</code> requests on the URL of <code>/add</code>
+* __Extra credit (Image Uploads and file writes)__: We need to handle the file uploads. For this, we will be using an npm library we installed earlier called `multer`.
+    * First require the module
+    * Next, add the middleware which processes the file. This can be done by `app.use(multer({dest: <yourBearImagePath>}).single('<yourImageUploadTagName>'));`
+    * The `bearImagePath` should be some location inside your `public` directory. (Only then we can host the files!)
+    * The `yourImageUploadTagName` should be the name of the input tag you gave in the HTML template `add.hbs`
+	* inside this handler: 
+    	1. if the middleware is working correctly, the uploaded file location can be found in `req.file.destination`
+		1. Make sure that the file type of the uploaded file is either `jpg`, `jpeg` or `png`. We don't want viruses! 
+    	1. you can check other properties too by printing out the `req` object.
+    	2. Once you know where the file is, you'll see that it has some gibberish name. Rename the image to its original image. 
+	    3. create a new object for this inputted bear
+	    4. add the new object to the global array holding all of the bears. 
+	    5. __Important__: We also want to create an entry to our JSON file directory `labeled_bears` so that next time we restart the app, we know where to find the new bears. Use `fs.writeFile` to create a new JSON file with the same format as the other JSON files in the `labeled_bears` directory.
+	    6. after modifying the in-memory store, redirect to the home/main page to display the updated list (any previous search criteria can be cleared)
+
+
+And your console should look something like this (for adding a single new bear in this example). Notice the redirect back to the home/main page (in this case <code>/</code>)
+
+```
+Method: GET 
+Path: /add
+{}
 ```
 
-Example of navigating the site with the console output of your middleware:
+```
+Method: POST 
+Path: /add
+{}
+```
 
-(Right click and choose open image in new tab to see larger version)
+```
+Method: GET 
+Path: /
+{}
+```
 
-![interaction](../resources/img/hw04-transactions/interaction-5.gif)
-
+If you check out the network tab in the browser, you should see a `POST` (as a result of the submit button push) and another `GET` (as a result of a redirect)...
 </div>
+
+### Deliverables
+
+Complete the implementations in `app.js` and `bear.js` which has the display, search and add functionalities.
+
+For extra credit:
+* modify the add functionality such that instead of an Image URL, you accept a file upload using multer (details mentioned above). [+5 points]
+* make the file upload more robust by dealing with some potential issues such as using hash lib to deal with file name collision for image names, use file-type module to verify file type, etc [+3 points]
+* save the uploaded data in a JSON file to the `labeled_bears` directory on upload.  [+1 point]
+
+You need to mention all the things you did for extra credit in a README.md file which should be pushed along with the rest of the repository. If we can't see what you've done for extra credit, we can't give you the points.
 
 </div>

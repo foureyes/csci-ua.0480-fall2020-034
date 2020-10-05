@@ -253,7 +253,7 @@ Express Documentation
 
 [{{ site.book_js_6 }}]({{ site.book_js_6_link }})
 
-* [Chapter 7. Important External Modules - Express - Middleware](https://www.oreilly.com/library/view/node-up-and/9781449332235/ch07.html#id3221848) ","__Due Wednesday morning 10/7, by 11am__ 
+* [Chapter 7. Important External Modules - Express - Middleware](https://www.oreilly.com/library/view/node-up-and/9781449332235/ch07.html#id3221848) ","__Due Monday morning 10/12, by 11am__ 
  
  * Quiz #6 
 ",
@@ -304,7 +304,11 @@ MongoDB Documentation
 * [MongoDB Types](https://docs.mongodb.com/manual/core/documen://docs.mongodb.com/manual/reference/bson-types/)
 * [MongoDB Query Documents](https://docs.mongodb.com/manual/tutorial/query-documents/)
 * [MongoDB Create, Read, Update, Delete](https://docs.mongodb.com/manual/crud/)
-* [MongoDB Insert](https://docs.mongodb.com/manual/tutorial/insert-documents/)",,
+* [MongoDB Insert](https://docs.mongodb.com/manual/tutorial/insert-documents/)","<!--
+__Due Monday 10/14 at 11pm__
+ 
+* [Homework #4](homework/04.html)
+-->",
 y,,11,Oct-12,Mon,"* NoSQL Database Continued
 * Object Document Mapper
 * Database Design

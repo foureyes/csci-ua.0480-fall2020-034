@@ -13,7 +13,8 @@ h1.warning {
 	<div class="panel-heading">Homework #4</div>
 	<div class="panel-body" markdown="block">
 
-# bears.ai
+# bears.ai Due 10/17 at 11pm
+
 
 ## Overview
 
