@@ -30,7 +30,11 @@ This is our first step towards that $100 million! We want to create a site that 
 * middleware
 * handling and creating forms: GET and POST
 * storing and managing data in-memory
+
+__For extra credit__: We will also be working with
+
 * file uploads
+* file writing
 
 You'll be creating 3 pages:
 
@@ -195,7 +199,7 @@ So far our homepage is very boring and doesn't show anything, so lets make it di
 
 We will store the data in-memory, and display bears in a list format. Each bear has 3 components: 
 
-1. the image path
+1. the image URL
 2. the label (type of bear)
 3. the weight of the bear (in lbs.)
 
@@ -205,19 +209,19 @@ In `bears.js`, create a class that represents a bear. Your class should behave a
 
 ```
 // the constructor accepts:
-// the image path
+// the image URL
 // the label
 // the weight of the bear
 const bear = new Bear(
-  'teddy1.jpg', 
-  'teddy bear',
+  'http://www.bearconservation.org.uk/wp-content/uploads/2017/08/Kodiak_brown_bear_FWS_18383.jpg', 
+  'brown bear',
   2
 )
 
 // the constructor results in an object with the following properties / methods:
-console.log(b.imagePath);  // teddy1.jpg
-console.log(b.label);  // teddy bear
-console.log(b.weight);  // 2
+console.log(b.imagePath);  // http://www.bearconservation.org.uk/wp-content/uploads/2017/08/Kodiak_brown_bear_FWS_18383.jpg
+console.log(b.label);  // brown bear
+console.log(b.weight);  // 450
 ```
 
 ⚠️ Export the class you make... and bring it into `app.js` so that your web app can create `Bear` instances!
@@ -241,9 +245,9 @@ The general requirements for this part are:
 * once everything is read, print out the global variable of bears:
 
 ```
-[ Bear { imagePath: 'teddy2.jpg', label: 'teddy bear', weight: '3' },
+[ Bear { imagePath: 'http://www.bearconservation.org.uk/wp-content/uploads/2017/08/Kodiak_brown_bear_FWS_18383.jpg', label: 'teddy bear', weight: '3' },
   Bear {
-    imagePath: 'black-bear.jpg',
+    imagePath: 'http://www.bearconservation.org.uk/wp-content/uploads/2017/08/Kodiak_brown_bear_FWS_18383.jpg',
     label: 'black bear',
     weight: '150' }
 ]
@@ -266,6 +270,7 @@ The general requirements for this part are:
 * add html to display the bear data in an organized way
     * HINT: can iterate through the list of bears using the <code>#each</code> helper
     * HINT: can put each bear & it's data (label, weight) in a list item (<code>li</code>)
+    * Make sure the image is displayed directly from the URL (using the `<img src>` tag)
 
 __Reload and visually check.__
 
@@ -322,11 +327,12 @@ What's missing is the ability to add our own custom bears and have it show up in
 * create a new route handler in __app.js__ for <code>/add</code>
 * create a new handlebars template and add a call to <code>render</code> inside of the new route handler that renders the new template
     * add a form to the template with 3 <code>inputs</code> and a submit button - this is how we'll add a bear
-    * two of these are text fields and one is a file type which will be used to upload images!
+    * All three are text fields which accepts the Image URL, Label and the Weight
+    * __Extra credit__: two of these are text fields and one is a file type which will be used to upload images!
 * __the form's method should be a <code>POST</code>__
 * the action of the form should be <code>""</code> or <code>/add</code> since we make the request to the same page (/add)
 * now that we have a new form making a <code>POST</code> request to a new URL, add a new route handler in __app.js__ to accept <code>POST</code> requests on the URL of <code>/add</code>
-* __Important__: We need to handle the file uploads. For this, we will be using an npm library we installed earlier called `multer`.
+* __Extra credit (Image Uploads and file writes)__: We need to handle the file uploads. For this, we will be using an npm library we installed earlier called `multer`.
     * First require the module
     * Next, add the middleware which processes the file. This can be done by `app.use(multer({dest: <yourBearImagePath>}).single('<yourImageUploadTagName>'));`
     * The `bearImagePath` should be some location inside your `public` directory. (Only then we can host the files!)
@@ -334,12 +340,12 @@ What's missing is the ability to add our own custom bears and have it show up in
 	* inside this handler: 
     	1. if the middleware is working correctly, the uploaded file location can be found in `req.file.destination`
 		1. Make sure that the file type of the uploaded file is either `jpg`, `jpeg` or `png`. We don't want viruses! 
-    	2. you can check other properties too by printing out the `req` object.
-    	3. Once you know where the file is, you'll see that it has some gibberish name. Rename the image to its original image. 
-	    4. create a new object for this inputted bear
-	    5. add the new object to the global array holding all of the bears. 
-	    6. __Important__: We also want to create an entry to our JSON file directory `labeled_bears` so that next time we restart the app, we know where to find the new bears. Use `fs.writeFile` to create a new JSON file with the same format as the other JSON files in the `labeled_bears` directory.
-	    7. after modifying the in-memory store, redirect to the home/main page to display the updated list (any previous search criteria can be cleared)
+    	1. you can check other properties too by printing out the `req` object.
+    	2. Once you know where the file is, you'll see that it has some gibberish name. Rename the image to its original image. 
+	    3. create a new object for this inputted bear
+	    4. add the new object to the global array holding all of the bears. 
+	    5. __Important__: We also want to create an entry to our JSON file directory `labeled_bears` so that next time we restart the app, we know where to find the new bears. Use `fs.writeFile` to create a new JSON file with the same format as the other JSON files in the `labeled_bears` directory.
+	    6. after modifying the in-memory store, redirect to the home/main page to display the updated list (any previous search criteria can be cleared)
 
 
 And your console should look something like this (for adding a single new bear in this example). Notice the redirect back to the home/main page (in this case <code>/</code>)
@@ -364,5 +370,16 @@ Path: /
 
 If you check out the network tab in the browser, you should see a `POST` (as a result of the submit button push) and another `GET` (as a result of a redirect)...
 </div>
+
+### Deliverables
+
+Complete the implementations in `app.js` and `bear.js` which has the display, search and add functionalities.
+
+For extra credit:
+* modify the add functionality such that instead of an Image URL, you accept a file upload using multer (details mentioned above). [+5 points]
+* make the file upload more robust by dealing with some potential issues such as using hash lib to deal with file name collision for image names, use file-type module to verify file type, etc [+3 points]
+* save the uploaded data in a JSON file to the `labeled_bears` directory on upload.  [+1 point]
+
+You need to mention all the things you did for extra credit in a README.md file which should be pushed along with the rest of the repository. If we can't see what you've done for extra credit, we can't give you the points.
 
 </div>
