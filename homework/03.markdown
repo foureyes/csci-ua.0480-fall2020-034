@@ -26,7 +26,7 @@ hr {
 	<div class="panel-heading">Homework #3</div>
 	<div class="panel-body" markdown="block">
 
-# A Simple Web Server, __Due Monday, Oct 5th at 11PM__
+# A Simple Web Server, Due <strike>Monday, Oct 5th</strike> __Tuesday, Oct 6th at 11PM__
 
 
 ## Homework Policy
