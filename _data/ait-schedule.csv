@@ -190,7 +190,8 @@ Coding Demo
 * public/[harry.html](examples/class07b/public/harry.html)
 * public/[mouse.html](examples/class07b/public/mouse.html)
  
- <!--Coding Demo fa19
+ <!--
+Coding Demo fa19
  * routing
 * sending a text file
 * sending an image
@@ -207,7 +208,7 @@ Example Set 1
   
 * [Node's HTTP Module](slides/07/node-http.html)
 * [Project Setup](slides/08/setup.html)
-→",See previous classes on HTTP and network programming,,
+-->",See previous classes on HTTP and network programming,,
 ,,7,Sep-28,Mon,"* Server-side Web Framework
 * Project Layout","Administrative
 
