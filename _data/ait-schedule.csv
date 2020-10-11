@@ -311,10 +311,7 @@ MongoDB Documentation
 __Due Monday 10/14 at 11pm__
  
 * [Homework #4](homework/04.html)",
-y,,11,Oct-12,Mon,"* NoSQL Database Continued
-* Object Document Mapper
-* Database Design
-* NoSQL Injection","* [More Mongoose](slides/12/mongoose.html)
+y,,11,Oct-12,Mon,,"* [More Mongoose](slides/12/mongoose.html)
 * NoSQL Injection Example
 
 __Midterm Practice__
@@ -346,12 +343,11 @@ MongoDB Documentation
 * [MongoDB Modeling Relationships / Examples](https://docs.mongodb.com/v3.2/applications/data-models-relationships/)
 * [Mongoose Embedded Documents - Sub Docs](http://mongoosejs.com/docs/subdocs.html) 
 * [Mongoose Document References - Mongoose Population](http://mongoosejs.com/docs/populate.html) 
-* [MDN TLS](https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security)","__Due Monday 10/19 at 11pm__
+* [MDN TLS](https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security)","<!--
+__Due Monday 10/19 at 11pm__
  
 * [Homework #5](homework/05.html)
 
-
-<!--
 
  __Due Wednesday 10/16 at 11pm__ 
 
