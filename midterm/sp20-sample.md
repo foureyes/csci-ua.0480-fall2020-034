@@ -16,9 +16,12 @@ Online research, class examples, and your work from previous homework assignment
 
 1. [Download the starter files, ait-sp20-midterm-sample.zip](ait-sp20-midterm-sample.zip)
 2. Write all of your code within the folder extracted (called `ait-sp20-midterm`)
-3. Additional templates can be added
-4. The only modules that can be used are the ones `require`d in `app.js` and built-in modules in node (such as `fs`, `path`, `net`, etc.)
-5. Create a `README.md` file with the number of each question that you attempted, each on a new line
+3. The dependencies of the project are in `package.json`:
+	* it might be useful to copy that up one directory: `cp package.json ../` as node looks in the current directory and parent directories for node_modules (doing this will make it so that you don't have to maually delete node_modules when uploading)
+	* once `package.json` is copied, you can go back up to the directory that contains the unzipped folder, `ait-sp20-midterm` and run your install there, so `node_modules` won't be in your uploaded zip file
+	* remember, with a package.json, `npm install` will install all listed dependencies
+4. Additional templates can be added
+5. The only modules that can be used are the ones `require`d in `app.js` and built-in modules in node (such as `fs`, `path`, `net`, etc.)
 6. __MAKE SURE YOUR CODE IS RUNNABLE and THERE ARE NO IMMEDIATE RUNTIME ERRORS__ before your last submission!
 7. __Export the classes or variables as specified in each question__
 	* for example, in your express app, export `app`
@@ -31,7 +34,9 @@ Online research, class examples, and your work from previous homework assignment
 
 ![upload screen shows files are in directory](upload.png)
 
-Once submitted, the autograder will run to verify that your functions and routes are named correctly. Note, however, that passing tests from the autograder does not mean a correct solution was submitted. Conversely, a failing test does not mean that you won't get credit for the question, as your work will be manually tested as well. See image below to see the autograder output. Although one section is marked red to signify a failing test, it will still be reviewed manually. Again, passing these test only means you named things correctly.
+Once submitted, the autograder will run to verify that your functions and routes are named correctly. (If you have accommodations, you can request local test files to continue working on code after the end of class). 
+
+Note, however, that passing tests from the autograder __does not mean a correct solution was submitted (though they do partial correctness)__. Conversely, a failing test does not mean that you won't get credit for the question, as your work will be manually tested as well. See image below to see the autograder output. Although one section is marked red to signify a failing test, it will still be reviewed manually. Again, passing these test only means you named things correctly.
 
 ![gradescope results](../resources/img/gradescope-results.png)
 <style>
