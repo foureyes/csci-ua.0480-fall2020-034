@@ -5,7 +5,7 @@ title: CSCI-UA.0480 - Example Questions
 
 # Example Questions for Midterm
 
-This is a quickly put-together set of sample questions. There are likely lots of typos, and the gradescope portion won't be posted until Thursday, 3/26, morning... and it may not be fully functional. The instructions and questions below will be very similar to the actual exam... with the exception of an academic pledge being required as one of the first questions.
+The instructions and questions below will be very similar to the actual exam... with the exception of an academic pledge being required as one of the first questions.
 
 <hr>
 
@@ -16,10 +16,11 @@ Online research, class examples, and your work from previous homework assignment
 
 1. [Download the starter files, ait-sp20-midterm-sample.zip](ait-sp20-midterm-sample.zip)
 2. Write all of your code within the folder extracted (called `ait-sp20-midterm`)
-3. The dependencies of the project are in `package.json`:
-	* it might be useful to copy that up one directory: `cp package.json ../` as node looks in the current directory and parent directories for node_modules (doing this will make it so that you don't have to maually delete node_modules when uploading)
-	* once `package.json` is copied, you can go back up to the directory that contains the unzipped folder, `ait-sp20-midterm` and run your install there, so `node_modules` won't be in your uploaded zip file
-	* remember, with a package.json, `npm install` will install all listed dependencies
+3. The dependencies of the project are in `package.json`, which will be outside of `ait-sp20-midterm`:
+	* note that it is __outside__ of the midterm project directory	
+	* your can run `npm install` where `package.json` is, and it will create `node_modules` outside of the midterm project directory
+	* when you zip your project for submission, DO NOT INCLUDE `node_modules`
+	* (there should be no need to remove it, though)
 4. Additional templates can be added
 5. The only modules that can be used are the ones `require`d in `app.js` and built-in modules in node (such as `fs`, `path`, `net`, etc.)
 6. __MAKE SURE YOUR CODE IS RUNNABLE and THERE ARE NO IMMEDIATE RUNTIME ERRORS__ before your last submission!
