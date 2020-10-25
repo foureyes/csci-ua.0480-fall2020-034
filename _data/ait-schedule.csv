@@ -370,11 +370,12 @@ y,exam,14,Oct-21,Wed,EXAM #1,"
 
 * [Final Project Miletsone #01](final-project.html#milestone1)
 * [Homework #06](homework/06.html) ",
-y,,15,Oct-26,Mon,"* Authentication
+,,15,Oct-26,Mon,"
+* Authentication
 * Final Project / Deployment
 ","
 * [Final Project](final-project.html)
-* Review Routers and URL Parameters
+* Review MongoDB and Mongoose
 * [Authentication](slides/16/auth.html)
 * [High-Level Description of SSL/TLS](slides/16/ssl.html)","Programming JavaScript Applications by Eric Elliott 
 
@@ -392,13 +393,18 @@ Using Passport JS
 * [PassportJS Documentation](http://passportjs.org/docs)
 * [From passport-local-mongoose](https://github.com/saintedlama/passport-local-mongoose/tree/master/examples/login)
 * [From mherman.org](http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/#.VjGSOq6rSRs)
-* [From scotch.io](http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local)","<!--__Due Monday 10/28 at 11pm:__
+* [From scotch.io](http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local)","__Due Monday 11/02 at 11pm__
+ 
+* [Homework #5](homework/05.html)
+* [Final Project Milestone #01](final-project.html#milestone1)
+
+<!--__Due Monday 10/28 at 11pm:__
  
 * hw 7 – authentication
 
 * Quiz 4 and 5: Auth and Sessions/Cookies, HTML and CSS (to be posted)
 -->",
-y,,16,Oct-28,Wed,"* HTML Primer
+,,16,Oct-28,Wed,"* HTML Primer
 * Accessibility on the Web
 * JavaScript and the Browser
 * The Document Object Model

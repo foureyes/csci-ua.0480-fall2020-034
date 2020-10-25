@@ -32,9 +32,9 @@ pre {
 	<div class="panel-heading">Final Project</div>
 	<div class="panel-body" markdown="block">
 
-# Final Project, __Final Milestone Due__ <strike>4/22</strike> <strike>4/27</strike> 4/28
+# Final Project, __Final Milestone Due__ 11/30 at 11pm
 
-Earlier milestones due throughout April
+Earlier milestones due every one or two weeks leading up to final milestone due date.
 
 
 ## Overview 
@@ -150,7 +150,7 @@ Choose at least __8 points__ worth of these following topics (research and imple
 
 <a name="proposal"></a>
 
-###  __Due 4/1 at 11PM__ - Milestone 1 - Requirements / Specifications, Draft Data Model, Skeleton Application (20 points)
+###  __Due 11/2 at 11PM__ - Milestone 1 - Requirements / Specifications, Draft Data Model, Skeleton Application (20 points)
 
 [Check out sample documentation](https://github.com/nyu-csci-ua-0480-008-spring-2017/final-project-example)
 
@@ -197,14 +197,16 @@ Choose at least __8 points__ worth of these following topics (research and imple
 <br>
 <br>
 
-### Due Date <strike>4/8</strike> __4/13 at 11pm__ (due date extended)- Milestone 2 - Completed Schema, First Form and Progress on Research Topics (20 points)
+### Due Date __11/9 at 11pm__ - Milestone 2 - Completed Schema, Initial Deployment, "Proof of Concept" First Form and Refinement or Start of Research Topics (20 points)
 
+{% comment %}
 * <span class="warning">Use [this form to submit your deployed site](https://forms.gle/qdTDffmhYgsbCdmRA) to submit your code</span>
 * your submission won't be graded unless the form above is submitted
 * your repository should show the work you've done on:
 	* a completed schema
 	* one working form
 	* progress on a research topic
+{% endcomment %}
 
 {% comment %}
 1. your server and port name can be accessed through a link in a piazza post for milestone #2
@@ -222,17 +224,21 @@ Choose at least __8 points__ worth of these following topics (research and imple
 {% endcomment %}
 {% comment %}[this form to submit your deployed site](https://docs.google.com/forms/d/e/1FAIpQLSeDK0kCfwzhpZbEW1XSWq1sT1WIinZdZJ8Q8KjQiB5vTFKh9Q/viewform)
 {% endcomment %}
+
+{% comment %}
 <a name="milestone03">
 
 <br>
 <br>
 <br>
 
+{% endcomment %}
 
 
-### Due Date <strike>4/15</strike> <strike>4/20</strike> __4/21 at 11pm__ - Milestone 3 - Initial Deployment, Working Form, Progress on 2nd Form and Research (20 points)
+### Due Date  __11/16 at 11pm__ - Milestone 3 - Two Working Forms, and Significant Progress on Research Topics (20 points)
 
 
+{% comment %}
 1. deploy your application
 	* if deploying on courant, your server and port name can be accessed through a link in a piazza post `"Final Project Deployment Ports"`
 	* follow [these instructions](homework/deploy.html) to get your project running
@@ -246,6 +252,7 @@ Choose at least __8 points__ worth of these following topics (research and imple
         * consequently, a link to the github repository / line no that shows any proof of work is sufficient
         * or, if it's something that's already visible, a link to the a page on your site that's deployed to the server
 	* show work on second form via github links or actual functioning pages on your deployed site
+{% endcomment %}
 
 
 {% comment %}
@@ -271,16 +278,19 @@ Choose at least __8 points__ worth of these following topics (research and imple
 
 {% endcomment %}
 
+{% comment %}
 <a id="final_submit" name="final_submit">
 
 <br>
 <br>
 <br>
 <br>
+{% endcomment %}
 
-### Due Date <strike>4/22</strike> <strike>4/27</strike> __4/28 at 11PM__ - Final Project Complete and Code is fully  _Deployed_ (40 points)
+### Due Date  __11/30 at 11PM__ - Final Project Complete and Code is fully  _Deployed_ (40 points)
 
 
+{% comment %}
 * __all commits must be in by April 28th__ 
 * __project must be deployed__ on cims servers (or other platform, such as Heroku, gomix, zeit, etc.)     
 	* if your application needs to be restarted while being graded; I will contact you     
@@ -296,6 +306,7 @@ Choose at least __8 points__ worth of these following topics (research and imple
 <br>
 <br>
 
+{% endcomment %}
 
 
 {% comment %}
