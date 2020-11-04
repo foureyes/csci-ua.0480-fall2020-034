@@ -199,31 +199,19 @@ Choose at least __8 points__ worth of these following topics (research and imple
 
 ### Due Date __11/9 at 11pm__ - Milestone 2 - Completed Schema, Initial Deployment, "Proof of Concept" First Form and Refinement or Start of Research Topics (20 points)
 
-{% comment %}
-* <span class="warning">Use [this form to submit your deployed site](https://forms.gle/qdTDffmhYgsbCdmRA) to submit your code</span>
-* your submission won't be graded unless the form above is submitted
-* your repository should show the work you've done on:
-	* a completed schema
-	* one working form
-	* progress on a research topic
-{% endcomment %}
-
-{% comment %}
 1. your server and port name can be accessed through a link in a piazza post for milestone #2
 2. attempt to deploy your code to Courant's servers by following [instructions](homework/deploy.html)
-3. <span class="warning">use [this form to submit your deployed site](https://forms.gle/qdTDffmhYgsbCdmRA) to submit your code</span>
+3. <span class="warning">use [this form to submit your deployed site](https://forms.gle/SBBBQGFs13SGNiwT8)</span>
 4. your submission won't be graded unless the form above is sent with urls to your deployed site
 5. your deployed site should contain the following progress:
     * __one working form (that is not login or registration)__ 
         * ...that should allow data to be modified or deleted
         * the results of submitting this form should be apparent/viewable
-    * show _some_ progress on at least 1 of your research topics,  __it doesn't have to be fully working... stub code from documentation or pseudocode is adequate__
+		* __if planning on using AJAX with API backend__, proof of working API end point is adequate, as long as query string or POST datashows changes in data sent back by API
+    * show _some_ progress, regardless of how small it is, on at least 1 of your research topics,  __it doesn't have to be fully working... stub code from documentation or pseudocode is adequate__
         * consequently, a link to the github repository / line no that shows any proof of work is sufficient
         * or, if it's something that's already visible, a link to the a page on your site that's deployed to the server
       
-{% endcomment %}
-{% comment %}[this form to submit your deployed site](https://docs.google.com/forms/d/e/1FAIpQLSeDK0kCfwzhpZbEW1XSWq1sT1WIinZdZJ8Q8KjQiB5vTFKh9Q/viewform)
-{% endcomment %}
 
 {% comment %}
 <a name="milestone03">
