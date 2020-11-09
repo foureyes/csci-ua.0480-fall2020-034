@@ -14,7 +14,7 @@ title: CSCI-UA.0480 - Homework #7
 	<div class="panel-body" markdown="block">
 
 
-# One Hand of Blackjack (Client Side JavaScript) - __Due Monday, April 20th, by 11PM__
+# One Hand of Blackjack (Client Side JavaScript) - __Due Monday, Nov 11th, by 11PM__
 
 
 ## Overview
