@@ -477,10 +477,10 @@ MDN Articles on AJAX
 OWASP
 
 * [OWASP - Cross Site Scripting](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))","
-  __Due Monday 11/11 at 11pm:__
+  __Due Monday 11/16 at 11pm:__
 
-* [Homework #07](homework/07.html) 
-* Final Project Milestone #03](final-project.html#milestone03)
+* [Homework #06](homework/06.html) 
+* [Final Project Milestone #03](final-project.html#milestone03)
 
 <!--
 __Due 4/13 at 11am__
@@ -498,7 +498,7 @@ __Due Wednesday 11/13 at 11pm:__
 -->
 
 ",m1 due
-y,,20,Nov-11,Wed,"* AJAX Continued
+,,20,Nov-11,Wed,"* AJAX Continued
 * Polling
 * Promises","* [Ajax Part 2](slides/21/ajax-express.html)
 * [Promises](slides/21/promises.html)
@@ -514,13 +514,15 @@ y,,20,Nov-11,Wed,"* AJAX Continued
 
 MDN
 
-* [MDN - Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)","__Due Monday 4/20 at 11pm:__
+* [MDN - Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)","<!--
+__Due Monday 4/20 at 11pm:__
  
 * [Homework #7](homework/07.html)
 
 __Due Tuesday 4/21 at 11pm:__
 
-* [Final Project Milestone #03](final-project.html#milestone03)",
+* [Final Project Milestone #03](final-project.html#milestone03)
+-->",
 y,,21,Nov-16,Mon,"* Promises Continued
 * fetch 
 * async / await","* Example Code for AJAX and Promises
@@ -535,11 +537,12 @@ MDN Articles
 
 * [MDN - Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 * [MDN - Async Await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)","
+<!--
+
 __Due Tuesday 04/28 at 11pm:__
 
  * [Final Project Milestone #04](final-project.html#milestone04)
 
-<!--
 
 __Due Wednesday 11/20 at 11pm:__
  

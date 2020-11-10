@@ -1,6 +1,6 @@
 ---
 layout: homework
-title: CSCI-UA.0480 - Homework #7
+title: CSCI-UA.0480 - Homework #6
 ---
 
 <style>
@@ -10,11 +10,11 @@ title: CSCI-UA.0480 - Homework #7
 </style>
 
 <div class="panel panel-default">
-	<div class="panel-heading">Homework #7</div>
+	<div class="panel-heading">Homework #6</div>
 	<div class="panel-body" markdown="block">
 
 
-# One Hand of Blackjack (Client Side JavaScript) - __Due Monday, Nov 11th, by 11PM__
+# One Hand of Blackjack (Client Side JavaScript) - __Due Monday, Nov 16th, by 11PM__
 
 
 ## Overview
