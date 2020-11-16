@@ -10,7 +10,7 @@ title: CSCI-UA.0480 - Homework #6
 </style>
 
 <div class="panel panel-default">
-	<div class="panel-heading">Homework #7</div>
+	<div class="panel-heading">Homework #6</div>
 	<div class="panel-body" markdown="block">
 
 
