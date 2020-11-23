@@ -11,7 +11,7 @@ title: CSCI-UA.0480 - Socket IO Lab
 
 ## Submission Process
 
-* work in groups of 2 or 3 
+* work in groups of 3 or 4 
 * __submit using [the form on the schedule](../#class22)__
 * __each person on the team should submit their own individual form__
 
@@ -21,7 +21,7 @@ If you'd like, you can work directly in glitch.com. Additionally, if you want to
 
 * __+60%__ for showing up and submitting form  (that's it, really! 😮)
 * __+25%__ form submitted with a _reasonable_ amount of _valid looking_ code
-* __+15%__ code deployed on glitch.com (kind of optional, since you basically get 90% for just submitting a form with some code!)
+* __+15%__ code deployed on glitch.com (kind of optional, since you basically get 85% for just submitting a form with some code!)
 
 ## Overview
 
@@ -48,8 +48,8 @@ Make a real time web app that:
 6. everyone connected to the game can see the emoji move in real time
 7. when someone new connects to the game, the should see the current position of both emoji
 8. try playing your game / looking over your code
-	* does your game handle the case where two clients click on the same emoji... and it's registered as two movements (rather than 1) on the server?
-	* can you reduce your client side code so that there's only one click handler that's used for both buttons?
+	* 👀 does your game handle the case where two clients click on the same emoji... and it's registered as two movements (rather than 1) on the server?
+	* 🤔 can you reduce your client side code so that there's only one click handler that's used for both buttons?
 9. try to deploy to glitch.com
 
 Finished already? 
@@ -70,7 +70,7 @@ Finished already?
 
 Use the _one-page_ version of the slides to guide you through socket.io:
 
-[https://cs.nyu.edu/courses/fall19/CSCI-UA.0480-001/_site/slides/23/socketio.html?print-pdf](https://cs.nyu.edu/courses/fall19/CSCI-UA.0480-001/_site/slides/23/socketio.html?print-pdf)
+[https://cs.nyu.edu/courses/fall20/CSCI-UA.0480-034/_site/slides/23/socketio.html?print-pdf](https://cs.nyu.edu/courses/fall20/CSCI-UA.0480-034/_site/slides/23/socketio.html?print-pdf)
 
 1. create a directory to store your project
 2. create your `package.json` and install these packages:
