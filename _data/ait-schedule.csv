@@ -597,23 +597,33 @@ HW 8 AJAX
 * [Build With React](http://buildwithreact.com/)
 * [React Events](https://facebook.github.io/react/docs/events.html#supported-events)
 * [React Using create-react-app](https://github.com/facebookincubator/create-react-app/blob/master/README.md#getting-started)",,
-y,,25,Nov-30,Mon,* Frontend Framework Continued,* See lab instructions,"Same as previous class
+,,25,Nov-30,Mon,* Frontend Framework Continued,* See slides from previous class,"
 
 Practice Questions
  
  * [Practice Questions](resources/handouts/final/final_exam_practice.pdf)
  * [Practice Questions Solutions](resources/handouts/final/final_exam_practice_solutions.pdf)
  * [Practice Questions Set 2](resources/handouts/final/final_exam_practice_2.pdf)
- * [Practice Questions Set 2 Solutions](resources/handouts/final/final_exam_practice_2_solutions.pdf)","
+ * [Practice Questions Set 2 Solutions](resources/handouts/final/final_exam_practice_2_solutions.pdf)","<!--
 __Due Sunday 5/3 at 11pm:__ 
  
- * [Homework #8](homework/08.html)",
-y,,26,Dec-2,Wed,"* Build tools 
-* Integration of all technologies","
+ * [Homework #8](homework/08.html)
+-->",
+,,26,Dec-2,Wed,"* Frontend Framework Continued
+
+<!--
+* Build tools 
+* Integration of all technologies
+-->","* See lab instructions
+
+<!--
 * (Optional) [React and Express / Using Webpack](slides/26/react-webpack-continued.html)
-",,"Due __today__ while you're in class:
+-->",,"Due __today__ while you're in class:
+
+* to be posted when class starts
  
+<!--
  * [React Lab](homework/react-lab.html)
- * [Form to submit](https://docs.google.com/forms/d/e/1FAIpQLSfPZMXdlMnx-w-ZighnPR5P7bw6opA0h_1QvFiw8M7SNSaKUw/viewform)",
+-->",
 y,,27,Dec-7,Mon,* Review,,,,
 y,exam,28,Dec-9,Wed,EXAM #2,,,,

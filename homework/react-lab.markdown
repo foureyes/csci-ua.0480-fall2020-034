@@ -3,6 +3,7 @@ layout: homework
 title: CSCI-UA.0480 -  React Lab
 ---
 
+
 <div class="panel panel-default">
   <div class="panel-heading">React Lab</div>
   <div class="panel-body" markdown="block">
@@ -11,30 +12,36 @@ title: CSCI-UA.0480 -  React Lab
 
 ## Submission Process
 
-* work in groups of 2 - 4 students
+* work in groups of 3 or 4 students
 * choose one of the applications described below in the Overview &rarr; Description and implement it
-* __submit using [this form](https://docs.google.com/forms/d/e/1FAIpQLSfPZMXdlMnx-w-ZighnPR5P7bw6opA0h_1QvFiw8M7SNSaKUw/viewform)__
+* __submit using [this form](https://forms.gle/qM5uzeQmrMfJtQXcA)__
 * __each person on the team should submit their own individual form__
+
+{% comment %}
 * once you've submitted:
     * raise your hand to let me know
     * either...
         1. help others with their lab
         2. try the other application!
 
+{% endcomment %}
+
 ## Scoring
 
 Total Score
 
 
-* __60 points__ submitting _any_ code
-* __80 points__ (Part 1) code deployed on [codepen.io](https://codepen.io), [glitch](glitch.com), and single card toggle works
-* __95 points__ (Part 2) code deployed and multi-card toggle works with hardcoded components / elements
-* __100 points__ (Part 3) full game implemented
+* __+70 points__ attending and submitting _any_ code
+* __+15 points__ (Part 2) _reasonable_ amount of code for part 2 present (comment out non-working code if deploying)
+* __+10 points__ (Part 3) _reasonable_ amount of code for part 3 present (comment out non-working code if deploying)
+* __+5 points__ (Part 1) any (1, 2 or 3) working code deployed on [codepen.io](https://codepen.io), [glitch](glitch.com)
 
+{% comment %}
 Extra Credit 
 
 * __+15 points__ (Part 4, extra credit) matching game implemented 
 * __+20 points__ (Part 5, extra credit) game over message implemented
+{% endcomment %}
 
 ## Overview
 
@@ -48,27 +55,42 @@ You'll be using the following concepts:
     * events
     * nested components
     * conditional rendering
+
+{% comment %}
     * form elements (extra credits)
+
+{% endcomment %}
 
 
 ### Description
 
+Create a card matching game with React.
+
+{% comment %}
 Create a game similar to  __MemorEmoji__ from  Homework 6, but using __React__ instead of plain JavaScript.
+{% endcomment %}
 
 ## Instructions
 
 ### Setup
 
-You can develop your application with any tools that you like. If you'd like to use what we learned in the lectures, you can choose one of these method (however, you can only deploy on 2 and 3):
+Start by using `create-react-app` and developing locally. Once you've done one or two parts, try deploying. 
 
-1. use `create-react-app`
-    * allows quick setup for local development
-    * you can use your own text editor!
-    * [see the instructions on setting up create-react-app in the slides](../slides/26/react-state-parent.html#/15)
+Use `create-react-app` to develop locally:
+
+* [see the instructions on setting up create-react-app in the slides](../slides/26/react-state-parent.html#/15)
+* 👀 the instructions and reference solution may refer to class-based components; if you're comfortable doing so, you can use functional components + `useState` and `useEffect` hooks
+
+
+{% comment %}
     * [but also, __if you are having path issues, especially on windows__, see this github ticket](https://github.com/facebookincubator/create-react-app/issues/138#issuecomment-334316575)
-2. remix a react starter boilerplate using [glitch.com](https://glitch.com/edit/#!/remix/starter-react)
+{% endcomment %}
+
+Then deploy using one of the options below:
+
+1. remix a react starter boilerplate using [glitch.com](https://glitch.com/edit/#!/remix/starter-react)
     * add your code to `app.jsx`
-3. create a new project (pen) in [codepen.io](https://codepen.io)
+2. create a new project (pen) in [codepen.io](https://codepen.io)
     * debugging might be difficult
     * ...but your application will already be deployed!
     * to setup, configure babel as your JavaScript pre-processor and add React and ReactDOM Libraries:
@@ -116,7 +138,7 @@ When the game ends (all of the cards are face up and matched), replace the cards
 
 ### Deployment
 
-To deploy your app on glitch.com... (only valid if you developed locally, otherwise, your code is already there!)
+To deploy your app on glitch.com... 
 
 1. use the react starter boilerplate on [glitch.com](https://glitch.com/edit/#!/remix/starter-react)
 2. add your code to `app.jsx`
@@ -125,7 +147,7 @@ To deploy your app on glitch.com... (only valid if you developed locally, otherw
     * only add your components and your call to `ReactDOM.render`
 3. add styles easily by adding a `style` tag in `index.html` and writing your css directly there
 
-To deploy your app in codepen.io... (only valid if you developed locally, otherwise, your code is _already there_)
+To deploy your app in codepen.io...
 
 1. configure babel, React and React DOM as shown in the gif above (see Instructions &rarr; setup)
 2. copy all of your __components__ over to the js panel (don't include any of the import statements)
