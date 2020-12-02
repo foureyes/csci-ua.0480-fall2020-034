@@ -74,9 +74,9 @@ Create a game similar to  __MemorEmoji__ from  Homework 6, but using __React__ i
 
 ### Setup
 
-Start by using `create-react-app` and developing locally. Once you've done one or two parts, try deploying. 
+Start by using `create-react-app` and developing locally. ⚠️ __Choose one person in your group to share their screen as you all code!__ Once you've done one or two parts, try deploying. 
 
-Use `create-react-app` to develop locally:
+To use `create-react-app` to develop locally:
 
 * [see the instructions on setting up create-react-app in the slides](../slides/26/react-state-parent.html#/15)
 * 👀 the instructions and reference solution may refer to class-based components; if you're comfortable doing so, you can use functional components + `useState` and `useEffect` hooks
